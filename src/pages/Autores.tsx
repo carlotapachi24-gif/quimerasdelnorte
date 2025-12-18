@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
-import { Link } from "react-router-dom";
+import { FileText } from "lucide-react";
+
+const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2/Documento_reestructurado.pdf";
 
 const Autores = () => {
   const location = useLocation();
@@ -113,6 +115,32 @@ const Autores = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* PDF Document for Saulo */}
+              {autor.id === "saulo" && (
+                <div className="pt-8 border-t border-border mt-8">
+                  <h3 className="text-xl font-display font-medium text-primary mb-6 flex items-center gap-3">
+                    <FileText className="w-5 h-5" />
+                    Documento
+                  </h3>
+                  <div className="bg-secondary/30 rounded-lg overflow-hidden">
+                    <iframe
+                      src={SAULO_PDF_URL}
+                      className="w-full h-[600px] md:h-[800px]"
+                      title="Documento de Saulo Avendaño Silva"
+                    />
+                  </div>
+                  <a
+                    href={SAULO_PDF_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Descargar documento PDF
+                  </a>
                 </div>
               )}
 
