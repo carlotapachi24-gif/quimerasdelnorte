@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
 
-const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2/Documento_reestructurado.pdf";
+const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2//Documento_reestructurado.pdf";
 
 const Obras = () => {
   const autoresConObras = autores.filter((autor) => autor.obras.length > 0);
@@ -44,7 +44,7 @@ const Obras = () => {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {autor.obras.map((obra, obraIndex) => {
-                  const isSauloDesesperanzas = autor.id === "saulo" && obra.toLowerCase().includes("desesperanzas");
+                  const isSauloDesesperanzas = autor.id === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas");
                   
                   if (isSauloDesesperanzas) {
                     return (
