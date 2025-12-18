@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
+import { FileText } from "lucide-react";
+
+const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2/Documento_reestructurado.pdf";
 
 const Obras = () => {
   const autoresConObras = autores.filter((autor) => autor.obras.length > 0);
@@ -41,19 +44,34 @@ const Obras = () => {
               </header>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {autor.obras.map((obra, obraIndex) => (
-                  <div
-                    key={obra}
-                    className="group p-6 border border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
-                  >
-                    <span className="text-xs text-muted-foreground block mb-2">
-                      {String(obraIndex + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors">
-                      {obra}
-                    </h3>
-                  </div>
-                ))}
+                {autor.obras.map((obra, obraIndex) => {
+                  const isSauloDesesperanzas = autor.id === "saulo" && obra.toLowerCase().includes("desesperanzas");
+                  
+                  return (
+                    <div
+                      key={obra}
+                      className="group p-6 border border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                    >
+                      <span className="text-xs text-muted-foreground block mb-2">
+                        {String(obraIndex + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors">
+                        {obra}
+                      </h3>
+                      {isSauloDesesperanzas && (
+                        <a
+                          href={SAULO_PDF_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-4 text-sm text-primary hover:text-primary/80 transition-colors"
+                        >
+                          <FileText className="w-4 h-4" />
+                          Ver documento PDF
+                        </a>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {index < autoresConObras.length - 1 && (
