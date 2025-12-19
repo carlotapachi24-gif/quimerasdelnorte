@@ -118,6 +118,19 @@ const Autores = () => {
                 </div>
               )}
 
+              {/* Filmografía link for Jacobo */}
+              {autor.id === "jacobo-carracedo" && (
+                <div className="pt-8 border-t border-border mt-8">
+                  <Link
+                    to="/archivo"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-display text-lg"
+                  >
+                    <FileText className="w-5 h-5" />
+                    Ver filmografía de referencia completa
+                  </Link>
+                </div>
+              )}
+
               {/* PDF Document for Saulo */}
               {autor.id === "saulo" && (
                 <div className="pt-8 border-t border-border mt-8">
