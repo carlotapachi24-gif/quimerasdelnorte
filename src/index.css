@@ -138,6 +138,118 @@
   .stagger-3 { animation-delay: 0.3s; }
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+  .stagger-7 { animation-delay: 0.7s; }
+  .stagger-8 { animation-delay: 0.8s; }
+
+  /* Interactive cards */
+  .card-hover {
+    @apply relative overflow-hidden transition-all duration-500;
+  }
+
+  .card-hover::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 transition-opacity duration-500;
+  }
+
+  .card-hover:hover::before {
+    @apply opacity-100;
+  }
+
+  .card-hover:hover {
+    @apply border-primary/40 shadow-lg shadow-primary/5;
+    transform: translateY(-4px);
+  }
+
+  /* Decorative line */
+  .line-accent {
+    @apply relative;
+  }
+
+  .line-accent::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-12 h-0.5 bg-primary origin-left animate-line-grow;
+  }
+
+  /* Text gradient effect */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  /* Glowing border */
+  .glow-border {
+    @apply relative;
+    box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.3);
+  }
+
+  /* Shimmer effect for loading states */
+  .shimmer {
+    @apply relative overflow-hidden;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--secondary)) 25%,
+      hsl(var(--primary) / 0.1) 50%,
+      hsl(var(--secondary)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Reveal animation container */
+  .reveal-container {
+    @apply overflow-hidden;
+  }
+
+  .reveal-content {
+    @apply animate-reveal-up;
+  }
+
+  /* Floating elements */
+  .float-element {
+    @apply animate-float;
+  }
+
+  /* Link with arrow animation */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-primary transition-all duration-300;
+  }
+
+  .link-arrow:hover {
+    @apply gap-4;
+  }
+
+  .link-arrow svg {
+    @apply transition-transform duration-300;
+  }
+
+  .link-arrow:hover svg {
+    @apply translate-x-1;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent;
+  }
+
+  /* Subtle pattern background */
+  .pattern-bg {
+    background-image: radial-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Image hover zoom */
+  .img-zoom {
+    @apply overflow-hidden;
+  }
+
+  .img-zoom img {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .img-zoom:hover img {
+    @apply scale-105;
+  }
 }
 
 @layer utilities {
