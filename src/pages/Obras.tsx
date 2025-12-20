@@ -12,56 +12,56 @@ const Obras = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 pattern-bg relative">
-        <div className="container mx-auto max-w-5xl relative">
-          <div className="flex items-center gap-4 mb-6 opacity-0 animate-fade-up">
+      <section className="pt-28 pb-16 px-6 pattern-bg relative">
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
             <div className="w-8 h-px bg-primary" />
             <span className="text-sm uppercase tracking-widest text-primary font-medium">Catálogo</span>
           </div>
           
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-light text-primary mb-8 opacity-0 animate-fade-up line-accent" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-primary mb-6 opacity-0 animate-fade-up" style={{ animationDelay: '0.1s' }}>
             Obras
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl opacity-0 animate-fade-up leading-relaxed" style={{ animationDelay: '0.2s' }}>
+          <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl opacity-0 animate-fade-up leading-relaxed" style={{ animationDelay: '0.2s' }}>
             El archivo literario completo de los autores de Quimeras del Norte
           </p>
 
           {/* Quick stats */}
-          <div className="flex gap-12 mt-12 opacity-0 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex gap-8 md:gap-12 mt-10 opacity-0 animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <BookOpen size={20} className="text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <BookOpen size={18} className="text-primary" />
               </div>
               <div>
-                <p className="text-3xl font-display font-light text-primary">{totalObras}</p>
+                <p className="text-2xl font-display font-light text-primary">{totalObras}</p>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Obras</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-display text-lg">{autoresConObras.length}</span>
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <span className="text-primary font-display">{autoresConObras.length}</span>
               </div>
               <div>
-                <p className="text-3xl font-display font-light text-primary">{autoresConObras.length}</p>
+                <p className="text-2xl font-display font-light text-primary">{autoresConObras.length}</p>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Autores</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Decorative element */}
-        <div className="absolute top-32 right-12 w-32 h-32 border-t border-r border-primary/20 hidden lg:block opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }} />
+        {/* Decorative element - behind content */}
+        <div className="absolute top-28 right-8 lg:right-16 w-24 lg:w-32 h-24 lg:h-32 border-t border-r border-primary/15 hidden md:block opacity-0 animate-fade-in pointer-events-none" style={{ animationDelay: '0.5s' }} />
       </section>
 
       {/* Author index */}
-      <section className="py-8 px-6 border-y border-border bg-secondary/30 sticky top-20 z-40 backdrop-blur-sm">
+      <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[72px] z-40 backdrop-blur-sm">
         <div className="container mx-auto max-w-5xl">
-          <nav className="flex flex-wrap gap-4 md:gap-6">
+          <nav className="flex flex-wrap gap-3 md:gap-5">
             {autoresConObras.map((autor, index) => (
               <a
                 key={autor.id}
                 href={`#obras-${autor.id}`}
-                className="text-foreground/70 hover:text-primary transition-colors font-display text-base group flex items-center gap-1"
+                className="text-foreground/70 hover:text-primary transition-colors font-display text-sm md:text-base group flex items-center gap-1"
               >
                 {autor.nombre.split(' ')[0]}
                 <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -72,13 +72,13 @@ const Obras = () => {
       </section>
 
       {/* Works by Author */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto max-w-5xl space-y-32">
+      <section className="py-16 px-6">
+        <div className="container mx-auto max-w-5xl space-y-24">
           {autoresConObras.map((autor, index) => (
             <article 
               key={autor.id} 
               id={`obras-${autor.id}`}
-              className="scroll-mt-40 opacity-0 animate-fade-up" 
+              className="scroll-mt-32 opacity-0 animate-fade-up" 
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
               <header className="mb-10">
@@ -162,31 +162,31 @@ const Obras = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-32 px-6 bg-primary text-primary-foreground relative overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute -top-20 -left-20 w-64 h-64 border border-primary-foreground/10 rounded-full" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 border border-primary-foreground/10 rounded-full" />
+      <section className="py-24 px-6 bg-primary text-primary-foreground relative overflow-hidden">
+        {/* Decorative circles - behind content */}
+        <div className="absolute -top-16 -left-16 w-48 h-48 border border-primary-foreground/10 rounded-full pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-64 h-64 border border-primary-foreground/10 rounded-full pointer-events-none" />
         
-        <div className="container mx-auto max-w-4xl relative">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-light mb-4">El archivo en números</h2>
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-display font-light mb-4">El archivo en números</h2>
             <div className="w-16 h-px bg-primary-foreground/30 mx-auto" />
           </div>
           
-          <div className="grid sm:grid-cols-2 gap-16 text-center">
-            <div className="space-y-4">
-              <p className="text-7xl md:text-8xl font-display font-light">
+          <div className="grid sm:grid-cols-2 gap-12 text-center">
+            <div className="space-y-3">
+              <p className="text-5xl md:text-6xl font-display font-light">
                 {autoresConObras.length}
               </p>
-              <p className="text-primary-foreground/70 uppercase tracking-widest text-sm">
+              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs">
                 Autores con obra
               </p>
             </div>
-            <div className="space-y-4">
-              <p className="text-7xl md:text-8xl font-display font-light">
+            <div className="space-y-3">
+              <p className="text-5xl md:text-6xl font-display font-light">
                 {totalObras}
               </p>
-              <p className="text-primary-foreground/70 uppercase tracking-widest text-sm">
+              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs">
                 Obras catalogadas
               </p>
             </div>

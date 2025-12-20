@@ -161,14 +161,9 @@
     transform: translateY(-4px);
   }
 
-  /* Decorative line */
+  /* Decorative line - removed to prevent overlap issues */
   .line-accent {
-    @apply relative;
-  }
-
-  .line-accent::after {
-    content: '';
-    @apply absolute -bottom-2 left-0 w-12 h-0.5 bg-primary origin-left animate-line-grow;
+    @apply relative pb-1;
   }
 
   /* Text gradient effect */
