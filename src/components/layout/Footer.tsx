@@ -5,16 +5,24 @@ export function Footer() {
   return (
     <footer className="relative border-t border-border bg-secondary/20 py-20 mt-24 overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-primary/20 to-transparent" />
+      {/* QUITADA la línea vertical izquierda */}
+      {/* <div className="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-primary/20 to-transparent" /> */}
       <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-primary/10 to-transparent" />
-      
+
       <div className="container mx-auto px-6 relative">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-16">
           <div className="max-w-md">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-px bg-primary" />
-              <span className="text-sm uppercase tracking-widest text-primary font-medium">Quimeras del Norte</span>
+              {/* Logo en vez de texto + quitada la raya horizontal */}
+              <Link to="/" className="inline-flex items-center">
+                <img
+                  src="/Logo color PNG.png"
+                  alt="Quimeras del Norte"
+                  className="h-6 w-auto"
+                />
+              </Link>
             </div>
+
             <p className="text-muted-foreground leading-relaxed text-lg">
               Un espacio virtual donde las voces literarias del norte comparten sus obras, sin necesidad de convivir físicamente.
             </p>
@@ -29,9 +37,9 @@ export function Footer() {
                   { to: "/autores", label: "Autores" },
                   { to: "/obras", label: "Obras" },
                 ].map((link) => (
-                  <Link 
+                  <Link
                     key={link.to}
-                    to={link.to} 
+                    to={link.to}
                     className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                   >
                     {link.label}
@@ -40,6 +48,7 @@ export function Footer() {
                 ))}
               </nav>
             </div>
+
             <div>
               <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Archivo</h4>
               <nav className="flex flex-col gap-3">
@@ -47,9 +56,9 @@ export function Footer() {
                   { to: "/archivo", label: "Filmografía" },
                   { to: "/tematicas", label: "Temáticas" },
                 ].map((link) => (
-                  <Link 
+                  <Link
                     key={link.to}
-                    to={link.to} 
+                    to={link.to}
                     className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                   >
                     {link.label}
@@ -58,11 +67,12 @@ export function Footer() {
                 ))}
               </nav>
             </div>
+
             <div>
               <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Proyecto</h4>
               <nav className="flex flex-col gap-3">
-                <Link 
-                  to="/sobre" 
+                <Link
+                  to="/sobre"
                   className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                 >
                   Sobre el proyecto
