@@ -18,7 +18,7 @@ export function Footer() {
                 <img
                   src="/Logo color PNG.png"
                   alt="Quimeras del Norte"
-                  className="h-6 w-auto"
+                  className="h-12 w-auto"
                 />
               </Link>
             </div>
