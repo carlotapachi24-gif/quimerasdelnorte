@@ -119,6 +119,7 @@ export const autores: Autor[] = [
       "El informe Trevido",
       "La mujer del cuadro",
       "Marrajo",
+      "La sonrisa y los naifes",
     ],
   },
   {

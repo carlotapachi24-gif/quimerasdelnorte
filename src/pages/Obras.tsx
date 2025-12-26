@@ -3,10 +3,12 @@ import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
 import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
 
-const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2//Documento_reestructurado.pdf";
+const SAULO_PDF_URL = "/01.pdf"; // reemplazado para usar el PDF proporcionado en public/
 
 // Local PDF stored in the public/ folder
 const ANDRES_MORPHEOPPIUM_PDF = "/Morpheoppium.pdf"; 
+const WILLIAM_CASTORA_PDF = "/Castora.pdf"; // PDF file in public/ for William Barbeitos - Castora
+const SARIEW_SONRISA_PDF = "/00-Prólogo.pdf"; // PDF for 'La sonrisa y los naifes' (Sariew)
 
 const Obras = () => {
   const autoresConObras = autores.filter((autor) => autor.obras.length > 0);
@@ -110,6 +112,8 @@ const Obras = () => {
                 {autor.obras.map((obra, obraIndex) => {
                   const isSauloDesesperanzas = autor.id === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas");
                   const isAndresMorpheoppium = autor.id === "andres-teixido" && obra === "Morpheoppium";
+                  const isWilliamCastora = autor.id === "william-barbeitos" && obra === "Castora";
+                  const isSariewSonrisa = autor.id === "sariew-zepol" && obra === "La sonrisa y los naifes";
                   
                   if (isSauloDesesperanzas) {
                     return (
@@ -144,6 +148,62 @@ const Obras = () => {
                       <a
                         key={obra}
                         href={ANDRES_MORPHEOPPIUM_PDF}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                      >
+                        <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                              {String(obraIndex + 1).padStart(2, '0')}
+                            </span>
+                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
+                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
+                            {obra}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+                            <BookOpen size={12} />
+                            Ver documento
+                          </p>
+                        </div>
+                      </a>
+                    );
+                  }
+
+                  if (isWilliamCastora) {
+                    return (
+                      <a
+                        key={obra}
+                        href={WILLIAM_CASTORA_PDF}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                      >
+                        <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                              {String(obraIndex + 1).padStart(2, '0')}
+                            </span>
+                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
+                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
+                            {obra}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+                            <BookOpen size={12} />
+                            Ver documento
+                          </p>
+                        </div>
+                      </a>
+                    );
+                  }
+
+                  if (isSariewSonrisa) {
+                    return (
+                      <a
+                        key={obra}
+                        href={SARIEW_SONRISA_PDF}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group card-hover p-6 lg:p-8 border border-border bg-background"
