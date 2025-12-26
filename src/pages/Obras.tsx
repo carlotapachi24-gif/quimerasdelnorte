@@ -14,6 +14,18 @@ const Obras = () => {
   const autoresConObras = autores.filter((autor) => autor.obras.length > 0);
   const totalObras = autoresConObras.reduce((acc, autor) => acc + autor.obras.length, 0);
 
+  // Helper to determine if an obra has an associated PDF and return its URL
+  const getPdfUrl = (autorId: string, obra: string) => {
+    if (autorId === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas")) return SAULO_PDF_URL;
+    if (autorId === "andres-teixido" && obra === "Morpheoppium") return ANDRES_MORPHEOPPIUM_PDF;
+    if (autorId === "william-barbeitos" && obra === "Castora") return WILLIAM_CASTORA_PDF;
+    if (autorId === "sariew-zepol" && obra === "La sonrisa y los naifes") return SARIEW_SONRISA_PDF;
+    return undefined;
+  };
+
+  // Only include authors that have at least one obra with a PDF
+  const autoresConObrasConPdf = autoresConObras.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
+
   return (
     <Layout>
       {/* Hero */}
@@ -79,7 +91,7 @@ const Obras = () => {
       {/* Works by Author */}
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-5xl space-y-24">
-          {autoresConObras.map((autor, index) => (
+          {autoresConObrasConPdf.map((autor, index) => (
             <article 
               key={autor.id} 
               id={`obras-${autor.id}`}
@@ -109,143 +121,38 @@ const Obras = () => {
               </header>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                {autor.obras.map((obra, obraIndex) => {
-                  const isSauloDesesperanzas = autor.id === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas");
-                  const isAndresMorpheoppium = autor.id === "andres-teixido" && obra === "Morpheoppium";
-                  const isWilliamCastora = autor.id === "william-barbeitos" && obra === "Castora";
-                  const isSariewSonrisa = autor.id === "sariew-zepol" && obra === "La sonrisa y los naifes";
-                  
-                  if (isSauloDesesperanzas) {
-                    return (
-                      <a
-                        key={obra}
-                        href={SAULO_PDF_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
-                      >
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                              {String(obraIndex + 1).padStart(2, '0')}
-                            </span>
-                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
-                            {obra}
-                          </h3>
-                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-                            <BookOpen size={12} />
-                            Ver documento
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  }
+                {autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).map((obra, obraIndex) => {
+                  const pdfUrl = getPdfUrl(autor.id, obra)!;
 
-                  if (isAndresMorpheoppium) {
-                    return (
-                      <a
-                        key={obra}
-                        href={ANDRES_MORPHEOPPIUM_PDF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
-                      >
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                              {String(obraIndex + 1).padStart(2, '0')}
-                            </span>
-                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
-                            {obra}
-                          </h3>
-                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-                            <BookOpen size={12} />
-                            Ver documento
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  }
-
-                  if (isWilliamCastora) {
-                    return (
-                      <a
-                        key={obra}
-                        href={WILLIAM_CASTORA_PDF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
-                      >
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                              {String(obraIndex + 1).padStart(2, '0')}
-                            </span>
-                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
-                            {obra}
-                          </h3>
-                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-                            <BookOpen size={12} />
-                            Ver documento
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  }
-
-                  if (isSariewSonrisa) {
-                    return (
-                      <a
-                        key={obra}
-                        href={SARIEW_SONRISA_PDF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
-                      >
-                        <div className="relative z-10">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                              {String(obraIndex + 1).padStart(2, '0')}
-                            </span>
-                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
-                            {obra}
-                          </h3>
-                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-                            <BookOpen size={12} />
-                            Ver documento
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  }
-                  
                   return (
-                    <div
+                    <a
                       key={obra}
+                      href={pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group card-hover p-6 lg:p-8 border border-border bg-background"
                     >
                       <div className="relative z-10">
-                        <span className="text-xs text-primary font-medium block mb-4 uppercase tracking-wider">
-                          {String(obraIndex + 1).padStart(2, '0')}
-                        </span>
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                            {String(obraIndex + 1).padStart(2, '0')}
+                          </span>
+                          <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
                         <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
                           {obra}
                         </h3>
+                        <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+                          <BookOpen size={12} />
+                          Ver documento
+                        </p>
                       </div>
-                    </div>
+                    </a>
                   );
                 })}
               </div>
 
-              {index < autoresConObras.length - 1 && (
+              {index < autoresConObrasConPdf.length - 1 && (
                 <div className="section-divider mt-20" />
               )}
             </article>
