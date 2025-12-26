@@ -6,12 +6,21 @@ import { BookOpen, ExternalLink } from "lucide-react";
 const Archivo = () => {
   const [filter, setFilter] = useState<string>("");
   const UNA_NOCHE_EN_LA_OPERA_PDF = "/1935 - Una noche en la ópera.pdf";
-  
-  const decadas = [...new Set(filmografia.map((f) => Math.floor(f.anio / 10) * 10))];
-  
+
+  // Helper to return a PDF URL for a given film (if available)
+  const getFilmPdfUrl = (pelicula: { titulo: string; anio: number }) => {
+    if (pelicula.anio === 1935 && pelicula.titulo === "Una noche en la ópera") return UNA_NOCHE_EN_LA_OPERA_PDF;
+    return undefined;
+  };
+
+  // Only consider films that have an attached PDF
+  const peliculasConPdf = filmografia.filter((f) => !!getFilmPdfUrl(f));
+
+  const decadas = [...new Set(peliculasConPdf.map((f) => Math.floor(f.anio / 10) * 10))];
+
   const peliculasFiltradas = filter
-    ? filmografia.filter((f) => Math.floor(f.anio / 10) * 10 === parseInt(filter))
-    : filmografia;
+    ? peliculasConPdf.filter((f) => Math.floor(f.anio / 10) * 10 === parseInt(filter))
+    : peliculasConPdf;
 
   return (
     <Layout>
@@ -60,43 +69,40 @@ const Archivo = () => {
         <div className="container mx-auto max-w-5xl">
           <div className="space-y-1">
             {peliculasFiltradas.map((pelicula, index) => {
-              const isUnaNocheOp = pelicula.anio === 1935 && pelicula.titulo === "Una noche en la ópera";
+              const pdfUrl = getFilmPdfUrl(pelicula)!;
+
               return (
                 <article
                   key={`${pelicula.titulo}-${pelicula.anio}`}
-                  className="group grid grid-cols-12 gap-4 py-4 border-b border-border hover:bg-primary/5 transition-colors px-4 -mx-4"
+                  className="group border-b border-border hover:bg-primary/5 transition-colors px-4 -mx-4"
                 >
-                  <div className="col-span-1 text-muted-foreground text-sm">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                  <div className="col-span-2 md:col-span-1">
-                    <span className="text-primary font-display text-lg">
-                      {pelicula.anio}
-                    </span>
-                  </div>
-                  <div className="col-span-9 md:col-span-5">
-                    <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors">
-                      {pelicula.titulo}
-                    </h3>
-                  </div>
-                  <div className="col-span-12 md:col-span-5 md:text-right">
-                    {isUnaNocheOp ? (
-                      <a
-                        href={UNA_NOCHE_EN_LA_OPERA_PDF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-primary hover:underline justify-end"
-                      >
+                  <a
+                    href={pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid grid-cols-12 gap-4 py-4"
+                  >
+                    <div className="col-span-1 text-muted-foreground text-sm">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <span className="text-primary font-display text-lg">
+                        {pelicula.anio}
+                      </span>
+                    </div>
+                    <div className="col-span-9 md:col-span-5">
+                      <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors">
+                        {pelicula.titulo}
+                      </h3>
+                    </div>
+                    <div className="col-span-12 md:col-span-5 md:text-right">
+                      <div className="inline-flex items-center justify-end gap-2">
                         <span className="text-muted-foreground">{pelicula.director}</span>
                         <ExternalLink size={16} className="text-primary" />
                         <span className="sr-only">Ver documento</span>
-                      </a>
-                    ) : (
-                      <p className="text-muted-foreground">
-                        {pelicula.director}
-                      </p>
-                    )}
-                  </div>
+                      </div>
+                    </div>
+                  </a>
                 </article>
               );
             })}
