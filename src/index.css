@@ -237,56 +237,15 @@
   .hero-bg {
     background-image: url('/images/hero-cathedral-real.png');
     background-repeat: no-repeat;
-    background-position: center 36%;
-    background-size: 70% auto;
+    background-position: center center;
+    background-size: 100% auto; /* full width */
     pointer-events: none;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.06));
+    mix-blend-mode: normal;
+    opacity: 0.3; /* 30% opacity as requested */
   }
 
-  .hero-bg.opacity-low { opacity: 0.18; }
-  .hero-bg.opacity-medium { opacity: 0.28; }
-  .hero-bg.opacity-high { opacity: 0.38; }
-
-  @media (min-width: 640px) {
-    .hero-bg { background-position: center 34%; background-size: 65% auto; }
-  }
-
-  @media (min-width: 768px) {
-    .hero-bg { background-position: center 32%; background-size: 55% auto; }
-  }
-
-  @media (min-width: 1024px) {
-    .hero-bg { background-position: center 30%; background-size: 50% auto; }
-  }
-
-  /* Temporary debug helper: forces visibility to verify image loading */
-  .hero-bg.debug {
-    opacity: 1 !important;
-    mix-blend-mode: normal !important;
-    background-size: 45% auto !important;
-    background-position: center 40% !important;
-    border: 1px dashed rgba(0,128,0,0.25);
-    background-color: rgba(0,128,0,0.02);
-  }
-
-  /* Visible debug image to confirm resource loading */
-  .hero-debug-img {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8%;
-    width: 640px;
-    max-width: 80%;
-    opacity: 1 !important;
-    border: 2px dashed rgba(0,128,0,0.7);
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  @media (min-width: 768px) {
-    .hero-debug-img { bottom: 6%; width: 900px; }
-  }
+  /* Slightly reduced opacity in dark mode to keep contrast */
+  .dark .hero-bg { opacity: 0.15; }
 
   /* Image hover zoom */
   .img-zoom {
