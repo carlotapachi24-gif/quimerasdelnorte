@@ -8,6 +8,8 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
+        {/* Hero background illustration */}
+        <div className="absolute inset-0 hero-bg opacity-30 dark:opacity-15 z-0 pointer-events-none" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
