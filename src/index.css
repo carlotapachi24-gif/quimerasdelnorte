@@ -270,6 +270,24 @@
     background-color: rgba(0,128,0,0.02);
   }
 
+  /* Visible debug image to confirm resource loading */
+  .hero-debug-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8%;
+    width: 640px;
+    max-width: 80%;
+    opacity: 1 !important;
+    border: 2px dashed rgba(0,128,0,0.7);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @media (min-width: 768px) {
+    .hero-debug-img { bottom: 6%; width: 900px; }
+  }
+
   /* Image hover zoom */
   .img-zoom {
     @apply overflow-hidden;

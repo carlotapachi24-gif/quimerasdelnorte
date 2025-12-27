@@ -10,6 +10,8 @@ const Index = () => {
       <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
         {/* Hero background illustration (debug enabled) */}
         <div className="absolute inset-0 hero-bg debug z-0 pointer-events-none" />
+        {/* Debug: explicit <img> to validate loading (remove after test) */}
+        <img src="/images/hero-cathedral-real.png" alt="hero-debug" className="hero-debug-img" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
