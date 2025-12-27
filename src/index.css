@@ -260,6 +260,16 @@
     .hero-bg { background-position: center 30%; background-size: 50% auto; }
   }
 
+  /* Temporary debug helper: forces visibility to verify image loading */
+  .hero-bg.debug {
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    background-size: 45% auto !important;
+    background-position: center 40% !important;
+    border: 1px dashed rgba(0,128,0,0.25);
+    background-color: rgba(0,128,0,0.02);
+  }
+
   /* Image hover zoom */
   .img-zoom {
     @apply overflow-hidden;
