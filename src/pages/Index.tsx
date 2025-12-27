@@ -9,13 +9,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
         {/* Hero background illustration */}
-        <div className="absolute inset-0 hero-bg opacity-30 dark:opacity-15 z-0 pointer-events-none" />
+        <div className="absolute inset-0 hero-bg opacity-30 dark:opacity-15 z-0 pointer-events-none opacity-medium" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
             <div className="w-16 h-px bg-primary opacity-0 animate-line-grow" style={{ animationDelay: '0.2s' }} />
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-light leading-[0.95] tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-light leading-[0.95] tracking-tight relative z-20">
               <span className="block overflow-hidden">
                 <span className="block text-primary opacity-0 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
                   Quimeras
