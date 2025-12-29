@@ -238,14 +238,15 @@
     background-image: url('/images/hero-cathedral-real.png');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100% auto; /* full width */
+    background-size: 100% auto; /* full width: fits to viewport width */
     pointer-events: none;
     mix-blend-mode: normal;
-    opacity: 0.3; /* 30% opacity as requested */
+    opacity: 0.20; /* 20% opacity as requested */
+    will-change: opacity, background-position;
   }
 
   /* Slightly reduced opacity in dark mode to keep contrast */
-  .dark .hero-bg { opacity: 0.15; }
+  .dark .hero-bg { opacity: 0.12; }
 
   /* Image hover zoom */
   .img-zoom {
