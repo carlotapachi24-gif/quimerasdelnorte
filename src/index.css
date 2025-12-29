@@ -241,12 +241,12 @@
     background-size: 100% auto; /* full width: fits to viewport width */
     pointer-events: none;
     mix-blend-mode: normal;
-    opacity: 0.20; /* 20% opacity as requested */
+    opacity: 0.12; /* 12% opacity as requested */
     will-change: opacity, background-position;
   }
 
   /* Slightly reduced opacity in dark mode to keep contrast */
-  .dark .hero-bg { opacity: 0.12; }
+  .dark .hero-bg { opacity: 0.08; }
 
   /* Image hover zoom */
   .img-zoom {
