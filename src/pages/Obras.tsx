@@ -71,7 +71,7 @@ const Obras = () => {
       </section>
 
       {/* Author index */}
-      <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[72px] z-40 backdrop-blur-sm">
+      <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[88px] z-40 backdrop-blur-sm">
         <div className="container mx-auto max-w-5xl">
           <nav className="flex flex-wrap gap-3 md:gap-5">
             {autoresConObras.map((autor, index) => (
