@@ -6,8 +6,17 @@ import { getPdfUrl } from "@/lib/utils";
 
 const Obras = () => {
   // Only show authors and works that have an associated PDF
-  const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
-  const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length, 0);
+  const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => {
+    if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
+    if (obra.pdf) return true;
+    return (obra.partes || []).some((p) => !!p.pdf);
+  }));
+
+  const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => {
+    if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
+    if (obra.pdf) return true;
+    return (obra.partes || []).some((p) => !!p.pdf);
+  }).length, 0);
 
 
 
