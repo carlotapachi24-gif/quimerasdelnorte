@@ -20,6 +20,7 @@ const Obras = () => {
     if (autorId === "andres-teixido" && obra === "Morpheoppium") return ANDRES_MORPHEOPPIUM_PDF;
     if (autorId === "william-barbeitos" && obra === "Castora") return WILLIAM_CASTORA_PDF;
     if (autorId === "sariew-zepol" && obra === "La sonrisa y los naifes") return SARIEW_SONRISA_PDF;
+    if (autorId === "rosa-constenla" && obra === "Vasectomía") return "/VASECTOMÍA.pdf";
     return undefined;
   };
 
