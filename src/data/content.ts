@@ -9,7 +9,7 @@ export const origen = {
     { nombre: "Rosa", rol: "monologuista" },
     { nombre: "Jacobo", rol: "aficionado al cine y al teatro" },
     { nombre: "Áurea", rol: "traductora" },
-    { nombre: "El narrador", rol: "en calidad de «conseguidor» (publicidad, imprenta, administración, etc.)" },
+    { nombre: "Polveirax", rol: "en calidad de «conseguidor» (publicidad, imprenta, administración, etc.)" },
   ],
   conflicto: "En el centro de la mesa había una botella de whisky. No se tuvieron en cuenta dos factores clave: la disparidad de criterios y los egos de varios asistentes, y la presencia del alcohol. La reunión terminó en gritos, discusiones e insultos etílicos.",
   citaRosa: "«Aquí no hay nada que hacer. Estamos perdiendo el tiempo.»",
@@ -54,7 +54,12 @@ export const autores: Autor[] = [
       "Abandonó los estudios y trabajó como estibador, mozo de almacén y camarero. Posteriormente entró a trabajar en una imprenta, donde compuso su única obra conocida: un pequeño volumen de unas cincuenta poesías.",
       "Murió por fallo cardiorrespiratorio. Fue encontrado en el suelo de la cocina tres días después; sobre la mesa estaba, manuscrito, su último poema.",
     ],
-    obras: [{ titulo: "Desesperanzas y otros anhelos", pdf: "/01.pdf" }],
+    obras: [{
+      titulo: "Desesperanzas y otros anhelos",
+      partes: [
+        { id: "poema-1", titulo: "Poema 1", pdf: "/01.pdf" },
+      ],
+    }],
   },
   {
     id: "andres-teixido",
