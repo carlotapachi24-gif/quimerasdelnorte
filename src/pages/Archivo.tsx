@@ -6,10 +6,12 @@ import { BookOpen, ExternalLink } from "lucide-react";
 const Archivo = () => {
   const [filter, setFilter] = useState<string>("");
   const UNA_NOCHE_EN_LA_OPERA_PDF = "/1935 - Una noche en la ópera.pdf";
+  const CHINATOWN_1974_PDF = "/1974 - Chinatown.pdf";
 
   // Helper to return a PDF URL for a given film (if available)
   const getFilmPdfUrl = (pelicula: { titulo: string; anio: number }) => {
     if (pelicula.anio === 1935 && pelicula.titulo === "Una noche en la ópera") return UNA_NOCHE_EN_LA_OPERA_PDF;
+    if (pelicula.anio === 1974 && pelicula.titulo === "Chinatown") return CHINATOWN_1974_PDF;
     return undefined;
   };
 

@@ -58,6 +58,7 @@ export const autores: Autor[] = [
       titulo: "Desesperanzas y otros anhelos",
       partes: [
         { id: "poema-1", titulo: "Poema 1", pdf: "/01.pdf" },
+        { id: "poema-2", titulo: "Poema 2", pdf: "/02.pdf" },
       ],
     }],
   },
