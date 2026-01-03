@@ -23,8 +23,7 @@ const Obras = () => {
     return undefined;
   };
 
-  // Only include authors that have at least one obra with a PDF
-  const autoresConObrasConPdf = autoresConObras.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
+
 
   return (
     <Layout>
@@ -91,7 +90,7 @@ const Obras = () => {
       {/* Works by Author */}
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-5xl space-y-24">
-          {autoresConObrasConPdf.map((autor, index) => (
+          {autoresConObras.map((autor, index) => (
             <article 
               key={autor.id} 
               id={`obras-${autor.id}`}
@@ -170,7 +169,7 @@ const Obras = () => {
                 })}
               </div>
 
-              {index < autoresConObrasConPdf.length - 1 && (
+              {index < autoresConObras.length - 1 && (
                 <div className="section-divider mt-20" />
               )}
             </article>
