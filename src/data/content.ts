@@ -72,7 +72,7 @@ export const autores: Autor[] = [
       "El sexo de la bruja",
       "El concierto",
       "Crónica de una lápida",
-      "Morpheoppium",
+      { titulo: "Morpheoppium", pdf: "/Morpheoppium.pdf" },
       "El grafito salvador",
       "El sueño imposible",
       "Deak Ferenc Ter",
@@ -99,7 +99,7 @@ export const autores: Autor[] = [
     ],
     obras: [
       "Cuatro elementos",
-      "Castora",
+      { titulo: "Castora", pdf: "/Castora.pdf" },
       "3007191",
       "El antro",
       "El boletín",
