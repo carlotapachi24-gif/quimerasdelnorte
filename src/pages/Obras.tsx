@@ -11,10 +11,6 @@ const WILLIAM_CASTORA_PDF = "/Castora.pdf"; // PDF file in public/ for William B
 const SARIEW_SONRISA_PDF = "/00-Prólogo.pdf"; // PDF for 'La sonrisa y los naifes' (Sariew)
 
 const Obras = () => {
-  // Only show authors and works that have an associated PDF
-  const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
-  const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length, 0);
-
   // Helper to determine if an obra has an associated PDF and return its URL
   const getPdfUrl = (autorId: string, obra: string) => {
     if (autorId === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas")) return SAULO_PDF_URL;
@@ -24,6 +20,10 @@ const Obras = () => {
     if (autorId === "rosa-constenla" && obra === "Vasectomía") return "/VASECTOMÍA.pdf";
     return undefined;
   };
+
+  // Only show authors and works that have an associated PDF
+  const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
+  const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length, 0);
 
 
 
