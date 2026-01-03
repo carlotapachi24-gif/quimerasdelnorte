@@ -11,8 +11,9 @@ const WILLIAM_CASTORA_PDF = "/Castora.pdf"; // PDF file in public/ for William B
 const SARIEW_SONRISA_PDF = "/00-Prólogo.pdf"; // PDF for 'La sonrisa y los naifes' (Sariew)
 
 const Obras = () => {
-  const autoresConObras = autores.filter((autor) => autor.obras.length > 0);
-  const totalObras = autoresConObras.reduce((acc, autor) => acc + autor.obras.length, 0);
+  // Only show authors and works that have an associated PDF
+  const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
+  const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length, 0);
 
   // Helper to determine if an obra has an associated PDF and return its URL
   const getPdfUrl = (autorId: string, obra: string) => {
@@ -121,10 +122,11 @@ const Obras = () => {
               </header>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                {autor.obras.map((obra, obraIndex) => {
-                  const pdfUrl = getPdfUrl(autor.id, obra);
+                {autor.obras
+                  .filter((obra) => !!getPdfUrl(autor.id, obra))
+                  .map((obra, obraIndex) => {
+                    const pdfUrl = getPdfUrl(autor.id, obra)!;
 
-                  if (pdfUrl) {
                     return (
                       <a
                         key={obra}
@@ -150,24 +152,7 @@ const Obras = () => {
                         </div>
                       </a>
                     );
-                  }
-
-                  return (
-                    <article key={obra} className="group card-hover p-6 lg:p-8 border border-border bg-background/5">
-                      <div className="relative z-10">
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                            {String(obraIndex + 1).padStart(2, '0')}
-                          </span>
-                        </div>
-                        <h3 className="text-lg lg:text-xl font-display text-foreground leading-tight">
-                          {obra}
-                        </h3>
-                        <p className="text-xs text-muted-foreground mt-3">Documento no disponible</p>
-                      </div>
-                    </article>
-                  );
-                })}
+                  })}
               </div>
 
               {index < autoresConObras.length - 1 && (
