@@ -157,24 +157,7 @@ const Autores = () => {
                 </div>
               )}
 
-              {autor.tematicas && autor.tematicas.length > 0 && (
-                <div className="pt-8 border-t border-border mt-8">
-                  <h3 className="text-xl font-display font-medium text-primary mb-6">
-                    Temáticas
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {autor.tematicas.map((tema) => (
-                      <Link
-                        key={tema}
-                        to="/tematicas"
-                        className="px-4 py-2 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                      >
-                        {tema}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+
 
               {index < autores.length - 1 && (
                 <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mt-16" />

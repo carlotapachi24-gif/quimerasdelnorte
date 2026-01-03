@@ -12,7 +12,6 @@ const leftNav = [
 const rightNav = [
   { name: "Autores", href: "/autores" },
   { name: "Obras", href: "/obras" },
-  { name: "Temáticas", href: "/tematicas" },
   { name: "Archivo", href: "/archivo" },
 ];
 

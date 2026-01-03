@@ -196,7 +196,7 @@ const Index = () => {
             {[
               { to: "/obras", icon: BookOpen, title: "Obras", desc: "El catálogo completo de obras literarias de todos los autores." },
               { to: "/archivo", icon: Film, title: "Filmografía", desc: "El archivo cinematográfico de referencia de Jacobo Carracedo." },
-              { to: "/tematicas", icon: Compass, title: "Temáticas", desc: "Los ejes conceptuales del trabajo de Mª Rosa Constenla Fernández." },
+
               { to: "/sobre", icon: Info, title: "Sobre el proyecto", desc: "La razón de ser de este espacio virtual." },
             ].map((item, index) => (
               <Link 

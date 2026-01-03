@@ -140,8 +140,7 @@ export const autores: Autor[] = [
     biografia: [
       "Hija de profesores. Estudió Biología. Inspirada por Miguel Gila, comenzó a escribir piezas humorístico-satíricas en forma de monólogos. Actualmente compagina esta actividad con su trabajo en una entidad bancaria.",
     ],
-    obras: [],
-    tematicas: [
+    obras: [
       "Deportes",
       "Vasectomía",
       "Hijos",

@@ -121,33 +121,51 @@ const Obras = () => {
               </header>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                {autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).map((obra, obraIndex) => {
-                  const pdfUrl = getPdfUrl(autor.id, obra)!;
+                {autor.obras.map((obra, obraIndex) => {
+                  const pdfUrl = getPdfUrl(autor.id, obra);
+
+                  if (pdfUrl) {
+                    return (
+                      <a
+                        key={obra}
+                        href={pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                      >
+                        <div className="relative z-10">
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                              {String(obraIndex + 1).padStart(2, '0')}
+                            </span>
+                            <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
+                          <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
+                            {obra}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+                            <BookOpen size={12} />
+                            Ver documento
+                          </p>
+                        </div>
+                      </a>
+                    );
+                  }
 
                   return (
-                    <a
-                      key={obra}
-                      href={pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group card-hover p-6 lg:p-8 border border-border bg-background"
-                    >
+                    <article key={obra} className="group card-hover p-6 lg:p-8 border border-border bg-background/5">
                       <div className="relative z-10">
                         <div className="flex items-center justify-between mb-4">
                           <span className="text-xs text-primary font-medium uppercase tracking-wider">
                             {String(obraIndex + 1).padStart(2, '0')}
                           </span>
-                          <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
-                        <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
+                        <h3 className="text-lg lg:text-xl font-display text-foreground leading-tight">
                           {obra}
                         </h3>
-                        <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
-                          <BookOpen size={12} />
-                          Ver documento
-                        </p>
+                        <p className="text-xs text-muted-foreground mt-3">Documento no disponible</p>
                       </div>
-                    </a>
+                    </article>
                   );
                 })}
               </div>

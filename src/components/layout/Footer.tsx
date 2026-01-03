@@ -54,7 +54,7 @@ export function Footer() {
               <nav className="flex flex-col gap-3">
                 {[
                   { to: "/archivo", label: "Filmografía" },
-                  { to: "/tematicas", label: "Temáticas" },
+
                 ].map((link) => (
                   <Link
                     key={link.to}
