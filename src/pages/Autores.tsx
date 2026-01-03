@@ -110,21 +110,65 @@ const Autores = () => {
                     Obras
                   </h3>
                   <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                    {autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).map((obra) => {
-                      const pdfUrl = getPdfUrl(autor.id, obra)!;
-                      return (
-                        <li key={obra} className="text-foreground/80 py-1">
-                          <a
-                            href={pdfUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-primary"
-                          >
-                            {obra}
-                          </a>
-                        </li>
-                      );
-                    })}
+                    {autor.obras
+                      .filter((obra) => {
+                        if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
+                        if (obra.pdf) return true;
+                        return (obra.partes || []).some((p) => !!p.pdf);
+                      })
+                      .map((obraEntry) => {
+                        if (typeof obraEntry === "string") {
+                          const pdfUrl = getPdfUrl(autor.id, obraEntry)!;
+                          return (
+                            <li key={obraEntry} className="text-foreground/80 py-1">
+                              <a
+                                href={pdfUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-primary"
+                              >
+                                {obraEntry}
+                              </a>
+                            </li>
+                          );
+                        }
+
+                        // object: either single pdf or partes
+                        if (obraEntry.pdf) {
+                          return (
+                            <li key={obraEntry.titulo} className="text-foreground/80 py-1">
+                              <a
+                                href={obraEntry.pdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-primary"
+                              >
+                                {obraEntry.titulo}
+                              </a>
+                            </li>
+                          );
+                        }
+
+                        // partes
+                        return (
+                          <li key={obraEntry.titulo} className="text-foreground/80 py-1">
+                            <span className="font-medium">{obraEntry.titulo}:</span>
+                            <div className="inline-flex flex-wrap gap-2 ml-2">
+                              {obraEntry.partes?.filter((p) => !!p.pdf).map((p) => (
+                                <a
+                                  key={p.id}
+                                  href={p.pdf}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-primary underline hover:text-primary/80"
+                                >
+                                  {p.titulo}
+                                </a>
+                              ))}
+                            </div>
+                          </li>
+                        );
+                      })}
                   </ul>
                 </div>
               )}

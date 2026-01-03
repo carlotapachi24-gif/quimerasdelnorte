@@ -107,13 +107,58 @@ const Obras = () => {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                 {autor.obras
-                  .filter((obra) => !!getPdfUrl(autor.id, obra))
-                  .map((obra, obraIndex) => {
-                    const pdfUrl = getPdfUrl(autor.id, obra)!;
+                  .filter((obra) => {
+                    if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
+                    // object: visible only if pdf or at least one parte has pdf
+                    if (obra.pdf) return true;
+                    return (obra.partes || []).some((p) => !!p.pdf);
+                  })
+                  .map((obraEntry, obraIndex) => {
+                    const titulo = typeof obraEntry === "string" ? obraEntry : obraEntry.titulo;
+
+                    // obra object with partes
+                    if (typeof obraEntry !== "string" && obraEntry.partes && obraEntry.partes.length > 0) {
+                      const partesVisibles = obraEntry.partes.filter((p) => !!p.pdf);
+
+                      return (
+                        <article
+                          key={titulo}
+                          className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                        >
+                          <div className="relative z-10">
+                            <div className="flex items-center justify-between mb-4">
+                              <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                                {String(obraIndex + 1).padStart(2, "0")}
+                              </span>
+                            </div>
+                            <h3 className="text-lg lg:text-xl font-display text-foreground mb-4">
+                              {titulo}
+                            </h3>
+
+                            <div className="flex flex-wrap gap-3">
+                              {partesVisibles.map((parte) => (
+                                <a
+                                  key={parte.id}
+                                  href={parte.pdf}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                                >
+                                  {parte.titulo}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        </article>
+                      );
+                    }
+
+                    // obra with single PDF (string or object with pdf)
+                    const pdfUrl = typeof obraEntry === "string" ? getPdfUrl(autor.id, obraEntry) : obraEntry.pdf;
 
                     return (
                       <a
-                        key={obra}
+                        key={titulo}
                         href={pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -122,12 +167,12 @@ const Obras = () => {
                         <div className="relative z-10">
                           <div className="flex items-center justify-between mb-4">
                             <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                              {String(obraIndex + 1).padStart(2, '0')}
+                              {String(obraIndex + 1).padStart(2, "0")}
                             </span>
                             <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                           <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
-                            {obra}
+                            {titulo}
                           </h3>
                           <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
                             <BookOpen size={12} />

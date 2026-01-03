@@ -1,16 +1,32 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { autores } from "@/data/content";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Helper to map author + obra to a PDF URL when available
-export function getPdfUrl(autorId: string, obra: string) {
-  if (autorId === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas")) return "/01.pdf";
-  if (autorId === "andres-teixido" && obra === "Morpheoppium") return "/Morpheoppium.pdf";
-  if (autorId === "william-barbeitos" && obra === "Castora") return "/Castora.pdf";
-  if (autorId === "sariew-zepol" && obra === "La sonrisa y los naifes") return "/00-Prólogo.pdf";
-  if (autorId === "rosa-constenla" && obra === "Vasectomía") return "/VASECTOMÍA.pdf";
+// Look up the PDF for a given author + obra (and optional parte id).
+export function getPdfUrl(autorId: string, obraTitulo: string, parteId?: string) {
+  const autor = autores.find((a) => a.id === autorId);
+  if (!autor) return undefined;
+
+  const obraEntry = autor.obras.find((o) => (typeof o === "string" ? o === obraTitulo : o.titulo === obraTitulo));
+  if (!obraEntry) return undefined;
+
+  if (typeof obraEntry === "string") {
+    // no pdf attached in data
+    return undefined;
+  }
+
+  if (parteId) {
+    const parte = obraEntry.partes?.find((p) => p.id === parteId || p.titulo === parteId);
+    return parte?.pdf;
+  }
+
+  // obra-level PDF
+  if (obraEntry.pdf) return obraEntry.pdf;
+
+  // if obra has partes, return undefined (we expect the UI to render the partes list)
   return undefined;
-} 
+}

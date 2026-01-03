@@ -16,6 +16,18 @@ export const origen = {
   cierre: "El tiempo le dio la razón, hasta que la tecnología permitió que estos personajes compartieran un espacio virtual sin necesidad de convivir físicamente. No todos pudieron hacerlo: algunos ya solo comparten las obras que escribieron en vida. Este espacio va dedicado a ellos.",
 };
 
+export interface Parte {
+  id: string;
+  titulo: string;
+  pdf?: string;
+}
+
+export type Obra = string | {
+  titulo: string;
+  pdf?: string;
+  partes?: Parte[];
+};
+
 export interface Autor {
   id: string;
   nombre: string;
@@ -26,7 +38,7 @@ export interface Autor {
   desaparicion?: string;
   denunciaOficial?: string;
   biografia: string[];
-  obras: string[];
+  obras: Obra[];
   tematicas?: string[];
 }
 
@@ -42,7 +54,7 @@ export const autores: Autor[] = [
       "Abandonó los estudios y trabajó como estibador, mozo de almacén y camarero. Posteriormente entró a trabajar en una imprenta, donde compuso su única obra conocida: un pequeño volumen de unas cincuenta poesías.",
       "Murió por fallo cardiorrespiratorio. Fue encontrado en el suelo de la cocina tres días después; sobre la mesa estaba, manuscrito, su último poema.",
     ],
-    obras: ["Desesperanzas y otros anhelos"],
+    obras: [{ titulo: "Desesperanzas y otros anhelos", pdf: "/01.pdf" }],
   },
   {
     id: "andres-teixido",
@@ -119,7 +131,12 @@ export const autores: Autor[] = [
       "El informe Trevido",
       "La mujer del cuadro",
       "Marrajo",
-      "La sonrisa y los naifes",
+      {
+        titulo: "La sonrisa y los naifes",
+        partes: [
+          { id: "prologo", titulo: "Prólogo", pdf: "/00-Prólogo.pdf" },
+        ],
+      },
     ],
   },
   {
@@ -142,7 +159,7 @@ export const autores: Autor[] = [
     ],
     obras: [
       "Deportes",
-      "Vasectomía",
+      { titulo: "Vasectomía", pdf: "/VASECTOMÍA.pdf" },
       "Hijos",
       "Colonialismo",
       "Dinero",
