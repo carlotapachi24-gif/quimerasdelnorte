@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
 import { FileText } from "lucide-react";
+import { getPdfUrl } from "@/lib/utils";
 
 const SAULO_PDF_URL = "https://xlpazpfnsevawhxhqhxz.supabase.co/storage/v1/object/public/saulo2/Documento_reestructurado.pdf";
 
@@ -103,17 +104,27 @@ const Autores = () => {
                 ))}
               </div>
 
-              {autor.obras.length > 0 && (
+              {autor.obras && autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length > 0 && (
                 <div className="pt-8 border-t border-border">
                   <h3 className="text-xl font-display font-medium text-primary mb-6">
                     Obras
                   </h3>
                   <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                    {autor.obras.map((obra) => (
-                      <li key={obra} className="text-foreground/80 py-1">
-                        {obra}
-                      </li>
-                    ))}
+                    {autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).map((obra) => {
+                      const pdfUrl = getPdfUrl(autor.id, obra)!;
+                      return (
+                        <li key={obra} className="text-foreground/80 py-1">
+                          <a
+                            href={pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary"
+                          >
+                            {obra}
+                          </a>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

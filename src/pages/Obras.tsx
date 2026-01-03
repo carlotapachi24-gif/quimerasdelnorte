@@ -2,25 +2,9 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
 import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
-
-const SAULO_PDF_URL = "/01.pdf"; // reemplazado para usar el PDF proporcionado en public/
-
-// Local PDF stored in the public/ folder
-const ANDRES_MORPHEOPPIUM_PDF = "/Morpheoppium.pdf"; 
-const WILLIAM_CASTORA_PDF = "/Castora.pdf"; // PDF file in public/ for William Barbeitos - Castora
-const SARIEW_SONRISA_PDF = "/00-Prólogo.pdf"; // PDF for 'La sonrisa y los naifes' (Sariew)
+import { getPdfUrl } from "@/lib/utils"; 
 
 const Obras = () => {
-  // Helper to determine if an obra has an associated PDF and return its URL
-  const getPdfUrl = (autorId: string, obra: string) => {
-    if (autorId === "saulo-avendano" && obra.toLowerCase().includes("desesperanzas")) return SAULO_PDF_URL;
-    if (autorId === "andres-teixido" && obra === "Morpheoppium") return ANDRES_MORPHEOPPIUM_PDF;
-    if (autorId === "william-barbeitos" && obra === "Castora") return WILLIAM_CASTORA_PDF;
-    if (autorId === "sariew-zepol" && obra === "La sonrisa y los naifes") return SARIEW_SONRISA_PDF;
-    if (autorId === "rosa-constenla" && obra === "Vasectomía") return "/VASECTOMÍA.pdf";
-    return undefined;
-  };
-
   // Only show authors and works that have an associated PDF
   const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => !!getPdfUrl(autor.id, obra)));
   const totalObras = autores.reduce((acc, autor) => acc + autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length, 0);
