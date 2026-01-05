@@ -140,7 +140,7 @@ export const autores: Autor[] = [
       {
         titulo: "La sonrisa y los naifes",
         partes: [
-          { id: "índice", titulo: "índice", pdf: "/Índice.pdf" },
+          { id: "índice", titulo: "Índice", pdf: "/Índice.pdf" },
           { id: "prologo", titulo: "Prólogo", pdf: "/00-Prólogo.pdf" },
           { id: "pickwick-house", titulo: "1 Pickwick house", pdf: "/01-Pickwick House.pdf" },
         ],
