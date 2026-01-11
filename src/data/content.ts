@@ -80,6 +80,7 @@ export const autores: Autor[] = [
       "Crónica de una lápida",
       { titulo: "Morpheoppium", pdf: "/Morpheoppium.pdf" },
       "El grafito salvador",
+      { titulo: "El grafito salvador", pdf: "/El grafito salvador.pdf" },
       "El sueño imposible",
       "Deak Ferenc Ter",
       "La vega del Ebro",
@@ -167,6 +168,7 @@ export const autores: Autor[] = [
     ],
     obras: [
       "Deportes",
+      { titulo: "Deportes", pdf: "/DEPORTES.pdf" },
       { titulo: "Vasectomía", pdf: "/VASECTOMÍA.pdf" },
       "Hijos",
       "Colonialismo",
