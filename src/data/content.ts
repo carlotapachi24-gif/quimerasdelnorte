@@ -59,6 +59,7 @@ export const autores: Autor[] = [
       partes: [
         { id: "poema-1", titulo: "Proemio", pdf: "/01.pdf" },
         { id: "poema-2", titulo: "Poema 2", pdf: "/02.pdf" },
+        { id: "poema-3", titulo: "Poema 3", pdf: "/03.pdf" },
       ],
     }],
   },
@@ -144,6 +145,7 @@ export const autores: Autor[] = [
           { id: "índice", titulo: "Índice", pdf: "/Índice.pdf" },
           { id: "prologo", titulo: "Prólogo", pdf: "/00-Prólogo.pdf" },
           { id: "pickwick-house", titulo: "1 Pickwick house", pdf: "/01-Pickwick House.pdf" },
+          { id: "Charterhouse-Street", titulo: "2 Charterhouse Street", pdf: "/02-Charterhouse Street.pdf" },
         ],
       },
     ],
