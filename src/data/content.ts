@@ -117,6 +117,7 @@ export const autores: Autor[] = [
       "La boca glotona",
       "La cartera de cuero",
       "La dependienta",
+      { titulo: "La dependienta", pdf: "/La dependienta.pdf" },
       "La pensión",
       "La tahona",
       "Lengua de tapa",
