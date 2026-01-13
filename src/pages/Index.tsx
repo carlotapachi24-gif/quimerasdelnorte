@@ -15,8 +15,10 @@ const Index = () => {
             {/* Decorative element */}
             <div className="w-16 h-px bg-primary opacity-0 animate-line-grow" style={{ animationDelay: '0.2s' }} />
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-light leading-[0.95] tracking-tight relative z-20">
-              <span className="block overflow-hidden">
+<h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-light leading-[0.95] tracking-tight relative z-20">
+  {/* Texto limpio para SEO/lectores/Google */}
+  <span className="sr-only">Quimeras del Norte</span>
+                <span className="block overflow-hidden">
                 <span className="block text-primary opacity-0 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
                   Quimeras
                 </span>
