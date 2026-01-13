@@ -52,7 +52,7 @@ const Tematicas = () => {
                     href="/VASECTOMÍA.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="aspect-square flex items-center justify-center p-8 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 group opacity-0 animate-fade-up"
+                    className="aspect-square flex items-center justify-center p-8 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 group opacity-0 animate-fade-up rounded-2xl"
                     style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                   >
                     <h2 className="text-2xl md:text-3xl font-display font-medium text-center group-hover:scale-105 transition-transform duration-500 flex items-center gap-2">
@@ -66,7 +66,7 @@ const Tematicas = () => {
               return (
                 <article
                   key={tema}
-                  className="aspect-square flex items-center justify-center p-8 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 group opacity-0 animate-fade-up"
+                  className="aspect-square flex items-center justify-center p-8 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 group opacity-0 animate-fade-up rounded-2xl"
                   style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                 >
                   <h2 className="text-2xl md:text-3xl font-display font-medium text-center group-hover:scale-105 transition-transform duration-500">

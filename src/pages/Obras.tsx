@@ -151,7 +151,7 @@ const Obras = () => {
                                   href={parte.pdf}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="px-3 py-1 rounded-sm bg-primary/5 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 text-xs font-ui"
+                                  className="px-3 py-1 rounded-full bg-primary/5 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 text-xs font-ui"
                                 >
                                   {parte.titulo}
                                 </a>

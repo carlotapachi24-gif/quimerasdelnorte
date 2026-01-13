@@ -193,7 +193,7 @@ const Autores = () => {
                     <FileText className="w-5 h-5" />
                     Documento
                   </h3>
-                  <div className="bg-secondary/30 rounded-lg overflow-hidden">
+                  <div className="bg-secondary/30 rounded-2xl overflow-hidden">
                     <iframe
                       src={SAULO_PDF_URL}
                       className="w-full h-[600px] md:h-[800px]"

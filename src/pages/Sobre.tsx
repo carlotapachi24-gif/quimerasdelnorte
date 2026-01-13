@@ -50,7 +50,7 @@ const Sobre = () => {
           <div className="space-y-4">
             <Link 
               to="/origen"
-              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group"
+              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group rounded-2xl"
             >
               <span className="text-xl font-display text-foreground group-hover:text-primary transition-colors">
                 Leer la historia completa del origen
@@ -59,7 +59,7 @@ const Sobre = () => {
             </Link>
             <Link 
               to="/autores"
-              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group"
+              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group rounded-2xl"
             >
               <span className="text-xl font-display text-foreground group-hover:text-primary transition-colors">
                 Conocer a los autores
@@ -68,7 +68,7 @@ const Sobre = () => {
             </Link>
             <Link 
               to="/obras"
-              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group"
+              className="flex items-center justify-between p-6 border border-border hover:border-primary/50 transition-colors group rounded-2xl"
             >
               <span className="text-xl font-display text-foreground group-hover:text-primary transition-colors">
                 Explorar las obras

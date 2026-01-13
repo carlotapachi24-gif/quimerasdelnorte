@@ -49,7 +49,7 @@ const Archivo = () => {
               onClick={() => setFilter("")}
               className={`px-4 py-2 text-sm transition-colors ${
                 !filter ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-              }`}
+              } rounded-full`}
             >
               Todas
             </button>
@@ -59,7 +59,7 @@ const Archivo = () => {
                 onClick={() => setFilter(String(decada))}
                 className={`px-4 py-2 text-sm transition-colors ${
                   filter === String(decada) ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-                }`}
+                } rounded-full`}
               >
                 {decada}s
               </button>
