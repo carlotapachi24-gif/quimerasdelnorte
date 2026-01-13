@@ -143,7 +143,7 @@ const Index = () => {
                   </h3>
                   {autor.apodo && (
                     <p className="text-sm text-muted-foreground italic mb-4">
-                      雅{autor.apodo}雄
+                      {autor.apodo}
                     </p>
                   )}
                   <p className="text-sm text-muted-foreground">
@@ -196,10 +196,9 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {[
-              { to: "/obras", icon: BookOpen, title: "Obras", desc: "El catケlogo completo de obras literarias de todos los autores." },
-              { to: "/archivo", icon: Film, title: "Filmografヴa", desc: "El archivo cinematogrケfico de referencia de Jacobo Carracedo." },
-
-              { to: "/sobre", icon: Info, title: "Sobre el proyecto", desc: "La razИn de ser de este espacio virtual." },
+              { to: "/obras", icon: BookOpen, title: "Obras", desc: "El catálogo completo de obras literarias de todos los autores." },
+              { to: "/archivo", icon: Film, title: "Filmografía", desc: "El archivo cinematográfico de referencia de Jacobo Carracedo." },
+              { to: "/sobre", icon: Info, title: "Sobre el proyecto", desc: "La razón de ser de este espacio virtual." },
             ].map((item, index) => (
               <Link 
                 key={item.to}

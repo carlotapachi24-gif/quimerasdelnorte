@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Quimeras del Norte - Sistema de diseヵo basado en IVC */
+    /* Quimeras del Norte - Sistema de diseño basado en IVC */
     /* Color principal: Pantone P 137-7 U - RGB(0, 137, 94) -> HSL(161, 100%, 27%) */
     --background: 60 10% 97%;
     --foreground: 160 10% 10%;
