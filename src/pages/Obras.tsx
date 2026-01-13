@@ -27,7 +27,7 @@ const Obras = () => {
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
             <div className="w-8 h-px bg-primary" />
-            <span className="text-sm uppercase tracking-widest text-primary font-medium">Catálogo</span>
+            <span className="text-sm uppercase tracking-widest text-primary font-medium font-ui">Catálogo</span>
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-light text-primary mb-6 opacity-0 animate-fade-up" style={{ animationDelay: '0.1s' }}>
@@ -45,7 +45,7 @@ const Obras = () => {
               </div>
               <div>
                 <p className="text-2xl font-display font-light text-primary">{totalObras}</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Obras</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-ui">Obras</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -54,7 +54,7 @@ const Obras = () => {
               </div>
               <div>
                 <p className="text-2xl font-display font-light text-primary">{autoresConObras.length}</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Autores</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-ui">Autores</p>
               </div>
             </div>
           </div>
@@ -65,14 +65,14 @@ const Obras = () => {
       </section>
 
       {/* Author index */}
-      <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[88px] z-40 backdrop-blur-sm">
+      <section className="py-4 px-6 sticky top-[88px] z-40 glass-panel border-y-0">
         <div className="container mx-auto max-w-5xl">
           <nav className="flex flex-wrap gap-3 md:gap-5">
             {autoresConObras.map((autor, index) => (
               <a
                 key={autor.id}
                 href={`#obras-${autor.id}`}
-                className="text-foreground/70 hover:text-primary transition-colors font-display text-sm md:text-base group flex items-center gap-1"
+                className="text-foreground/70 hover:text-primary transition-colors font-ui text-sm group flex items-center gap-1"
               >
                 {autor.nombre.split(' ')[0]}
                 <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -101,7 +101,7 @@ const Obras = () => {
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <span className="text-primary font-display">{autor.nombre.charAt(0)}</span>
                     </div>
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground">Autor</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground font-ui">Autor</span>
                   </div>
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-light text-foreground group-hover:text-primary transition-colors">
                     {autor.nombre}
@@ -132,11 +132,11 @@ const Obras = () => {
                       return (
                         <article
                           key={titulo}
-                          className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                          className="group card-hover p-6 lg:p-8"
                         >
                           <div className="relative z-10">
                             <div className="flex items-center justify-between mb-4">
-                              <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                              <span className="text-xs text-primary font-medium uppercase tracking-wider font-ui">
                                 {String(obraIndex + 1).padStart(2, "0")}
                               </span>
                             </div>
@@ -151,7 +151,7 @@ const Obras = () => {
                                   href={parte.pdf}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="px-3 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                                  className="px-3 py-1 rounded-sm bg-primary/5 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 text-xs font-ui"
                                 >
                                   {parte.titulo}
                                 </a>
@@ -171,11 +171,11 @@ const Obras = () => {
                         href={pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group card-hover p-6 lg:p-8 border border-border bg-background"
+                        className="group card-hover p-6 lg:p-8"
                       >
                         <div className="relative z-10">
                           <div className="flex items-center justify-between mb-4">
-                            <span className="text-xs text-primary font-medium uppercase tracking-wider">
+                            <span className="text-xs text-primary font-medium uppercase tracking-wider font-ui">
                               {String(obraIndex + 1).padStart(2, "0")}
                             </span>
                             <ExternalLink size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -183,7 +183,7 @@ const Obras = () => {
                           <h3 className="text-lg lg:text-xl font-display text-foreground group-hover:text-primary transition-colors leading-tight">
                             {titulo}
                           </h3>
-                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1">
+                          <p className="text-xs text-muted-foreground mt-3 flex items-center gap-1 font-ui">
                             <BookOpen size={12} />
                             Ver documento
                           </p>
@@ -218,7 +218,7 @@ const Obras = () => {
               <p className="text-5xl md:text-6xl font-display font-light">
                 {autoresConObras.length}
               </p>
-              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs">
+              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs font-ui">
                 Autores con obra
               </p>
             </div>
@@ -226,7 +226,7 @@ const Obras = () => {
               <p className="text-5xl md:text-6xl font-display font-light">
                 {totalObras}
               </p>
-              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs">
+              <p className="text-primary-foreground/70 uppercase tracking-widest text-xs font-ui">
                 Obras catalogadas
               </p>
             </div>

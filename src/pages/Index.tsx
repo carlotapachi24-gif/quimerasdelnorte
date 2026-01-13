@@ -38,7 +38,7 @@ const Index = () => {
             <div className="opacity-0 animate-fade-up pt-4" style={{ animationDelay: '0.9s' }}>
               <Link 
                 to="/origen"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20"
+                className="btn-modern"
               >
                 Descubrir la historia
                 <ArrowRight size={20} />
@@ -49,7 +49,7 @@ const Index = () => {
         
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in z-10" style={{ animationDelay: '1.2s' }}>
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">Explorar</span>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground font-ui">Explorar</span>
           <ArrowDown className="text-primary animate-float" size={24} />
         </div>
 
@@ -68,7 +68,7 @@ const Index = () => {
             {/* Section indicator */}
             <div className="flex items-center gap-4 opacity-0 animate-fade-up">
               <div className="w-8 h-px bg-primary" />
-              <span className="text-sm uppercase tracking-widest text-primary font-medium">El Origen</span>
+              <span className="text-sm uppercase tracking-widest text-primary font-medium font-ui">El Origen</span>
             </div>
 
             <p className="body-large text-foreground/80 opacity-0 animate-fade-up leading-[1.8]" style={{ animationDelay: '0.2s' }}>
@@ -90,7 +90,7 @@ const Index = () => {
             <div className="pt-2 opacity-0 animate-fade-up" style={{ animationDelay: '0.6s' }}>
               <Link 
                 to="/origen" 
-                className="link-arrow text-lg group"
+                className="link-arrow text-lg group font-ui font-medium"
               >
                 <span className="relative">
                   Leer la historia completa
@@ -110,15 +110,15 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
                 <div className="w-8 h-px bg-primary" />
-                <span className="text-sm uppercase tracking-widest text-primary font-medium">Voces Literarias</span>
+                <span className="text-sm uppercase tracking-widest text-primary font-medium font-ui">Voces Literarias</span>
               </div>
               <h2 className="section-title text-primary opacity-0 animate-fade-up pb-3" style={{ animationDelay: '0.1s' }}>
                 Los Autores
               </h2>
             </div>
             <Link 
-              to="/autores" 
-              className="link-arrow text-lg opacity-0 animate-fade-up md:pb-4" 
+              to="/autores"
+              className="link-arrow text-sm font-ui font-medium opacity-0 animate-fade-up md:pb-4" 
               style={{ animationDelay: '0.2s' }}
             >
               Ver todos
@@ -131,7 +131,7 @@ const Index = () => {
               <Link
                 key={autor.id}
                 to={`/autores#${autor.id}`}
-                className="group card-hover p-8 lg:p-10 border border-border bg-background opacity-0 animate-fade-up"
+                className="group card-hover p-8 lg:p-10 opacity-0 animate-fade-up"
                 style={{ animationDelay: `${0.15 * (index + 1)}s` }}
               >
                 <div className="relative z-10">
@@ -146,11 +146,11 @@ const Index = () => {
                       雅{autor.apodo}雄
                     </p>
                   )}
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground font-ui">
                     {autor.lugarNacimiento}
                   </p>
                   <div className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-sm">Explorar</span>
+                    <span className="text-sm font-ui font-medium">Explorar</span>
                     <ArrowRight size={16} />
                   </div>
                 </div>
@@ -188,7 +188,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
             <div className="w-8 h-px bg-primary" />
-            <span className="text-sm uppercase tracking-widest text-primary font-medium">Navegar</span>
+            <span className="text-sm uppercase tracking-widest text-primary font-medium font-ui">Navegar</span>
           </div>
           <h2 className="section-title mb-12 opacity-0 animate-fade-up pb-3" style={{ animationDelay: '0.1s' }}>
             Explorar el archivo
@@ -204,7 +204,7 @@ const Index = () => {
               <Link 
                 key={item.to}
                 to={item.to}
-                className="group card-hover p-10 lg:p-12 bg-secondary/30 border border-transparent opacity-0 animate-fade-up"
+                className="group card-hover p-10 lg:p-12 opacity-0 animate-fade-up"
                 style={{ animationDelay: `${0.15 * (index + 1)}s` }}
               >
                 <div className="relative z-10">
@@ -218,7 +218,7 @@ const Index = () => {
                     {item.desc}
                   </p>
                   <div className="mt-6 flex items-center gap-2 text-primary">
-                    <span className="text-sm">Acceder</span>
+                    <span className="text-sm font-ui font-medium">Acceder</span>
                     <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform duration-300" />
                   </div>
                 </div>

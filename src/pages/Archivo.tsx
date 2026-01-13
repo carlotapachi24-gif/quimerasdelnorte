@@ -78,7 +78,7 @@ const Archivo = () => {
               return (
                 <article
                   key={`${pelicula.titulo}-${pelicula.anio}`}
-                  className="group border-b border-border hover:bg-primary/5 transition-colors px-4 -mx-4"
+                  className="group border-b border-border/40 hover:bg-primary/5 transition-colors px-4 -mx-4"
                 >
                   <a
                     href={pdfUrl}
@@ -86,11 +86,11 @@ const Archivo = () => {
                     rel="noopener noreferrer"
                     className="grid grid-cols-12 gap-4 py-4"
                   >
-                    <div className="col-span-1 text-muted-foreground text-sm">
+                    <div className="col-span-1 text-muted-foreground text-sm font-ui pt-1">
                       {String(index + 1).padStart(2, '0')}
                     </div>
                     <div className="col-span-2 md:col-span-1">
-                      <span className="text-primary font-display text-lg">
+                      <span className="text-primary font-ui font-medium text-base">
                         {pelicula.anio}
                       </span>
                     </div>
@@ -116,7 +116,7 @@ const Archivo = () => {
             <p className="text-6xl md:text-7xl font-display font-light text-primary mb-4">
               {peliculasFiltradas.length}
             </p>
-            <p className="text-muted-foreground uppercase tracking-widest text-sm">
+            <p className="text-muted-foreground uppercase tracking-widest text-sm font-ui">
               Películas en el archivo
             </p>
           </div>
