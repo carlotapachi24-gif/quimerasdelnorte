@@ -7,10 +7,9 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24 section-veil">
+      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
         {/* Hero background illustration */}
         <div className="absolute inset-0 hero-bg z-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background/80 pointer-events-none" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
@@ -37,7 +36,7 @@ const Index = () => {
             <div className="opacity-0 animate-fade-up pt-4" style={{ animationDelay: '0.9s' }}>
               <Link 
                 to="/origen"
-                className="btn-primary"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20"
               >
                 Descubrir la historia
                 <ArrowRight size={20} />
@@ -58,7 +57,7 @@ const Index = () => {
       </section>
 
       {/* Origin Fragment */}
-      <section className="py-24 md:py-32 px-6 relative overflow-hidden section-veil">
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
         
@@ -103,7 +102,7 @@ const Index = () => {
       </section>
 
       {/* Authors Section */}
-      <section className="py-24 md:py-32 px-6 section-veil">
+      <section className="py-24 md:py-32 px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
@@ -142,7 +141,7 @@ const Index = () => {
                   </h3>
                   {autor.apodo && (
                     <p className="text-sm text-muted-foreground italic mb-4">
-                      «{autor.apodo}»
+                      雅{autor.apodo}雄
                     </p>
                   )}
                   <p className="text-sm text-muted-foreground">
@@ -183,7 +182,7 @@ const Index = () => {
       </section>
 
       {/* Explore Section */}
-      <section className="py-24 md:py-32 px-6 pattern-bg section-veil">
+      <section className="py-24 md:py-32 px-6 pattern-bg">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
             <div className="w-8 h-px bg-primary" />
@@ -195,10 +194,10 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {[
-              { to: "/obras", icon: BookOpen, title: "Obras", desc: "El catálogo completo de obras literarias de todos los autores." },
-              { to: "/archivo", icon: Film, title: "Filmografía", desc: "El archivo cinematográfico de referencia de Jacobo Carracedo." },
+              { to: "/obras", icon: BookOpen, title: "Obras", desc: "El catケlogo completo de obras literarias de todos los autores." },
+              { to: "/archivo", icon: Film, title: "Filmografヴa", desc: "El archivo cinematogrケfico de referencia de Jacobo Carracedo." },
 
-              { to: "/sobre", icon: Info, title: "Sobre el proyecto", desc: "La razón de ser de este espacio virtual." },
+              { to: "/sobre", icon: Info, title: "Sobre el proyecto", desc: "La razИn de ser de este espacio virtual." },
             ].map((item, index) => (
               <Link 
                 key={item.to}
