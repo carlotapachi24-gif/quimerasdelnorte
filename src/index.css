@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -100,10 +100,6 @@
 }
 
 @layer components {
-  .font-ui {
-    font-family: 'DM Sans', sans-serif;
-  }
-
   .nav-link {
     @apply relative text-foreground/70 hover:text-primary transition-colors duration-300;
   }
@@ -148,26 +144,21 @@
 
   /* Interactive cards */
   .card-hover {
-    @apply relative overflow-hidden transition-all duration-500 rounded-2xl border border-transparent bg-white/40 backdrop-blur-sm;
+    @apply relative overflow-hidden transition-all duration-500;
+  }
+
+  .card-hover::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 transition-opacity duration-500;
+  }
+
+  .card-hover:hover::before {
+    @apply opacity-100;
   }
 
   .card-hover:hover {
-    @apply border-primary/20 shadow-xl shadow-primary/5 -translate-y-1 bg-white/60;
-  }
-
-  /* Modern Button */
-  .btn-modern {
-    @apply inline-flex items-center gap-3 px-8 py-3 bg-primary text-primary-foreground font-ui font-medium tracking-wide text-sm transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20 rounded-full;
-  }
-
-  /* Glass Panel */
-  .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
-  }
-
-  /* Decorative line - removed to prevent overlap issues */
-  .line-accent {
-    @apply relative pb-1;
+    @apply border-primary/40 shadow-lg shadow-primary/5;
+    transform: translateY(-4px);
   }
 
   /* Text gradient effect */

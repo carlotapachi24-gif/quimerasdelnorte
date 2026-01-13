@@ -30,7 +30,7 @@ export function Footer() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16">
             <div>
-              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium font-ui">Explorar</h4>
+              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Explorar</h4>
               <nav className="flex flex-col gap-3">
                 {[
                   { to: "/origen", label: "El Origen" },
@@ -40,7 +40,7 @@ export function Footer() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1 font-ui text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                   >
                     {link.label}
                     <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -50,7 +50,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium font-ui">Archivo</h4>
+              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Archivo</h4>
               <nav className="flex flex-col gap-3">
                 {[
                   { to: "/archivo", label: "Filmografía" },
@@ -59,7 +59,7 @@ export function Footer() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1 font-ui text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                   >
                     {link.label}
                     <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -69,11 +69,11 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium font-ui">Proyecto</h4>
+              <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Proyecto</h4>
               <nav className="flex flex-col gap-3">
                 <Link
                   to="/sobre"
-                  className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1 font-ui text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors group inline-flex items-center gap-1"
                 >
                   Sobre el proyecto
                   <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -88,7 +88,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground italic font-display text-lg">
               Dedicado a quienes solo comparten las obras que escribieron en vida.
             </p>
-            <p className="text-xs text-muted-foreground/60 font-ui">
+            <p className="text-xs text-muted-foreground/60">
               © {new Date().getFullYear()} Quimeras del Norte
             </p>
           </div>

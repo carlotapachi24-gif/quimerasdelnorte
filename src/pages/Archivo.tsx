@@ -49,7 +49,7 @@ const Archivo = () => {
               onClick={() => setFilter("")}
               className={`px-4 py-2 text-sm transition-colors ${
                 !filter ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-              } rounded-full`}
+              } rounded-sm`}
             >
               Todas
             </button>
@@ -59,7 +59,7 @@ const Archivo = () => {
                 onClick={() => setFilter(String(decada))}
                 className={`px-4 py-2 text-sm transition-colors ${
                   filter === String(decada) ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-                } rounded-full`}
+                } rounded-sm`}
               >
                 {decada}s
               </button>
@@ -86,11 +86,11 @@ const Archivo = () => {
                     rel="noopener noreferrer"
                     className="grid grid-cols-12 gap-4 py-4"
                   >
-                    <div className="col-span-1 text-muted-foreground text-sm font-ui pt-1">
+                    <div className="col-span-1 text-muted-foreground text-sm">
                       {String(index + 1).padStart(2, '0')}
                     </div>
                     <div className="col-span-2 md:col-span-1">
-                      <span className="text-primary font-ui font-medium text-base">
+                      <span className="text-primary font-display text-lg">
                         {pelicula.anio}
                       </span>
                     </div>
@@ -116,7 +116,7 @@ const Archivo = () => {
             <p className="text-6xl md:text-7xl font-display font-light text-primary mb-4">
               {peliculasFiltradas.length}
             </p>
-            <p className="text-muted-foreground uppercase tracking-widest text-sm font-ui">
+            <p className="text-muted-foreground uppercase tracking-widest text-sm">
               Películas en el archivo
             </p>
           </div>
