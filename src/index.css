@@ -262,6 +262,96 @@
   }
 }
 
+@keyframes ambient-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(18px, -24px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes ambient-drift-wide {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-26px, 18px, 0) scale(1.03); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@layer components {
+  .page-ambient {
+    @apply absolute inset-0 -z-10 pointer-events-none;
+  }
+
+  .page-ambient::after {
+    content: '';
+    @apply absolute inset-0;
+    background: radial-gradient(
+      1200px 600px at 10% 0%,
+      hsl(var(--primary) / 0.05),
+      transparent 55%
+    );
+  }
+
+  .ambient-orb {
+    @apply absolute rounded-full;
+    filter: blur(2px);
+    opacity: 0.75;
+    animation: ambient-drift 14s ease-in-out infinite;
+  }
+
+  .ambient-orb-primary {
+    background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.22), transparent 70%);
+  }
+
+  .ambient-orb-accent {
+    background: radial-gradient(circle at 30% 30%, hsl(var(--accent) / 0.2), transparent 70%);
+    animation: ambient-drift-wide 18s ease-in-out infinite;
+  }
+
+  .ambient-orb-muted {
+    background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.12), transparent 70%);
+    animation-duration: 20s;
+  }
+
+  .section-veil {
+    @apply relative overflow-hidden;
+  }
+
+  .section-veil::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: radial-gradient(600px 300px at 15% 10%, hsl(var(--primary) / 0.08), transparent 60%),
+      radial-gradient(600px 300px at 85% 90%, hsl(var(--accent) / 0.08), transparent 60%);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg transition-all duration-300;
+    box-shadow: 0 18px 32px -22px hsl(var(--primary) / 0.8);
+  }
+
+  .btn-primary:hover {
+    @apply gap-5;
+    box-shadow: 0 26px 40px -24px hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:focus-visible {
+    outline: 2px solid hsl(var(--primary) / 0.4);
+    outline-offset: 4px;
+  }
+
+  .card-hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid hsl(var(--primary) / 0.18);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .card-hover:hover::after {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -7,9 +7,10 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
+      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24 section-veil">
         {/* Hero background illustration */}
         <div className="absolute inset-0 hero-bg z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background/80 pointer-events-none" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
@@ -36,7 +37,7 @@ const Index = () => {
             <div className="opacity-0 animate-fade-up pt-4" style={{ animationDelay: '0.9s' }}>
               <Link 
                 to="/origen"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20"
+                className="btn-primary"
               >
                 Descubrir la historia
                 <ArrowRight size={20} />
@@ -57,7 +58,7 @@ const Index = () => {
       </section>
 
       {/* Origin Fragment */}
-      <section className="py-24 md:py-32 px-6 relative overflow-hidden">
+      <section className="py-24 md:py-32 px-6 relative overflow-hidden section-veil">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
         
@@ -102,7 +103,7 @@ const Index = () => {
       </section>
 
       {/* Authors Section */}
-      <section className="py-24 md:py-32 px-6">
+      <section className="py-24 md:py-32 px-6 section-veil">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
@@ -182,7 +183,7 @@ const Index = () => {
       </section>
 
       {/* Explore Section */}
-      <section className="py-24 md:py-32 px-6 pattern-bg">
+      <section className="py-24 md:py-32 px-6 pattern-bg section-veil">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-4 mb-4 opacity-0 animate-fade-up">
             <div className="w-8 h-px bg-primary" />
