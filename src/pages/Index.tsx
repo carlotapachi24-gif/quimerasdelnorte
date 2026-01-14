@@ -8,8 +8,17 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
-        {/* Hero background illustration */}
-        <div className="absolute inset-0 hero-bg z-0 pointer-events-none" />
+        {/* Hero background video */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <video
+            className="w-full h-full object-cover opacity-50"
+            src="/7c2d1fe8-7c10-4566-9524-0451c32b2af3.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </div>
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="space-y-8">
             {/* Decorative element */}
