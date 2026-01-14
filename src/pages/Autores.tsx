@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
-import { autores } from "@/data/content";
+import { autores, type Obra } from "@/data/content";
 import { FileText } from "lucide-react";
 import { getPdfUrl } from "@/lib/utils";
 
@@ -55,7 +55,19 @@ const Autores = () => {
       {/* Authors */}
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-4xl space-y-32">
-          {autores.map((autor, index) => (
+          {autores.map((autor, index) => {
+            const obrasUnicas = Array.from(
+              autor.obras.reduce((acc, obra) => {
+                const titulo = typeof obra === "string" ? obra : obra.titulo;
+                const existente = acc.get(titulo);
+                if (!existente || typeof existente === "string") {
+                  acc.set(titulo, obra);
+                }
+                return acc;
+              }, new Map<string, Obra>()).values(),
+            );
+
+            return (
             <article
               key={autor.id}
               id={autor.id}
@@ -104,23 +116,18 @@ const Autores = () => {
                 ))}
               </div>
 
-              {autor.obras && autor.obras.filter((obra) => !!getPdfUrl(autor.id, obra)).length > 0 && (
+              {obrasUnicas.length > 0 && (
                 <div className="pt-8 border-t border-border">
                   <h3 className="text-xl font-display font-medium text-primary mb-6">
                     Obras
                   </h3>
                   <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                    {autor.obras
-                      .filter((obra) => {
-                        if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
-                        if (obra.pdf) return true;
-                        return (obra.partes || []).some((p) => !!p.pdf);
-                      })
-                      .map((obraEntry) => {
-                        if (typeof obraEntry === "string") {
-                          const pdfUrl = getPdfUrl(autor.id, obraEntry)!;
-                          return (
-                            <li key={obraEntry} className="text-foreground/80 py-1">
+                    {obrasUnicas.map((obraEntry) => {
+                      if (typeof obraEntry === "string") {
+                        const pdfUrl = getPdfUrl(autor.id, obraEntry);
+                        return (
+                          <li key={obraEntry} className="text-foreground/80 py-1">
+                            {pdfUrl ? (
                               <a
                                 href={pdfUrl}
                                 target="_blank"
@@ -129,32 +136,35 @@ const Autores = () => {
                               >
                                 {obraEntry}
                               </a>
-                            </li>
-                          );
-                        }
+                            ) : (
+                              <span>{obraEntry}</span>
+                            )}
+                          </li>
+                        );
+                      }
 
-                        // object: either single pdf or partes
-                        if (obraEntry.pdf) {
-                          return (
-                            <li key={obraEntry.titulo} className="text-foreground/80 py-1">
-                              <a
-                                href={obraEntry.pdf}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-primary"
-                              >
-                                {obraEntry.titulo}
-                              </a>
-                            </li>
-                          );
-                        }
-
-                        // partes
+                      if (obraEntry.pdf) {
                         return (
                           <li key={obraEntry.titulo} className="text-foreground/80 py-1">
-                            <span className="font-medium">{obraEntry.titulo}:</span>
+                            <a
+                              href={obraEntry.pdf}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-primary"
+                            >
+                              {obraEntry.titulo}
+                            </a>
+                          </li>
+                        );
+                      }
+
+                      const partesConPdf = (obraEntry.partes || []).filter((p) => !!p.pdf);
+                      return (
+                        <li key={obraEntry.titulo} className="text-foreground/80 py-1">
+                          <span className="font-medium">{obraEntry.titulo}:</span>
+                          {partesConPdf.length > 0 && (
                             <div className="inline-flex flex-wrap gap-2 ml-2">
-                              {obraEntry.partes?.filter((p) => !!p.pdf).map((p) => (
+                              {partesConPdf.map((p) => (
                                 <a
                                   key={p.id}
                                   href={p.pdf}
@@ -166,9 +176,10 @@ const Autores = () => {
                                 </a>
                               ))}
                             </div>
-                          </li>
-                        );
-                      })}
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -218,7 +229,8 @@ const Autores = () => {
                 <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mt-16" />
               )}
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
     </Layout>
