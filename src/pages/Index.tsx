@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-24">
+      <section className="min-h-screen flex flex-col justify-center relative px-6 pattern-bg pt-16">
         {/* Hero background video */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video
