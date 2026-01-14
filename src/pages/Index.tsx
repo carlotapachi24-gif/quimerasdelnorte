@@ -1,9 +1,18 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { origen, autores } from "@/data/content";
 import { ArrowDown, ArrowRight, BookOpen, Film, Compass, Info } from "lucide-react";
 
 const Index = () => {
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -11,11 +20,11 @@ const Index = () => {
         {/* Hero background video */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video
+            ref={heroVideoRef}
             className="w-full h-full object-cover opacity-25"
             src="/7c2d1fe8-7c10-4566-9524-0451c32b2af3.mp4"
             autoPlay
             muted
-            loop
             playsInline
           />
         </div>
