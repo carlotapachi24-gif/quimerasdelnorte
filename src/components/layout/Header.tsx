@@ -32,10 +32,8 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? "bg-background/98 backdrop-blur-md shadow-sm border-b border-border" 
-          : "bg-transparent border-b border-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white border-b border-border ${
+        isScrolled ? "shadow-sm" : ""
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
