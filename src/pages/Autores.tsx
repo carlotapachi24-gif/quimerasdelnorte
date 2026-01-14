@@ -56,7 +56,7 @@ const Autores = () => {
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-4xl space-y-32">
           {autores.map((autor, index) => {
-            const obrasUnicas = Array.from(
+            const obrasPublicadas = Array.from(
               autor.obras.reduce((acc, obra) => {
                 const titulo = typeof obra === "string" ? obra : obra.titulo;
                 const existente = acc.get(titulo);
@@ -65,7 +65,11 @@ const Autores = () => {
                 }
                 return acc;
               }, new Map<string, Obra>()).values(),
-            );
+            ).filter((obra) => {
+              if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
+              if (obra.pdf) return true;
+              return (obra.partes || []).some((p) => !!p.pdf);
+            });
 
             return (
             <article
@@ -116,29 +120,17 @@ const Autores = () => {
                 ))}
               </div>
 
-              {obrasUnicas.length > 0 && (
+              {obrasPublicadas.length > 0 && (
                 <div className="pt-8 border-t border-border">
                   <h3 className="text-xl font-display font-medium text-primary mb-6">
                     Obras
                   </h3>
                   <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-                    {obrasUnicas.map((obraEntry) => {
+                    {obrasPublicadas.map((obraEntry) => {
                       if (typeof obraEntry === "string") {
-                        const pdfUrl = getPdfUrl(autor.id, obraEntry);
                         return (
                           <li key={obraEntry} className="text-foreground/80 py-1">
-                            {pdfUrl ? (
-                              <a
-                                href={pdfUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-primary"
-                              >
-                                {obraEntry}
-                              </a>
-                            ) : (
-                              <span>{obraEntry}</span>
-                            )}
+                            {obraEntry}
                           </li>
                         );
                       }
@@ -146,37 +138,14 @@ const Autores = () => {
                       if (obraEntry.pdf) {
                         return (
                           <li key={obraEntry.titulo} className="text-foreground/80 py-1">
-                            <a
-                              href={obraEntry.pdf}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-primary"
-                            >
-                              {obraEntry.titulo}
-                            </a>
+                            {obraEntry.titulo}
                           </li>
                         );
                       }
 
-                      const partesConPdf = (obraEntry.partes || []).filter((p) => !!p.pdf);
                       return (
                         <li key={obraEntry.titulo} className="text-foreground/80 py-1">
-                          <span className="font-medium">{obraEntry.titulo}:</span>
-                          {partesConPdf.length > 0 && (
-                            <div className="inline-flex flex-wrap gap-2 ml-2">
-                              {partesConPdf.map((p) => (
-                                <a
-                                  key={p.id}
-                                  href={p.pdf}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-primary underline hover:text-primary/80"
-                                >
-                                  {p.titulo}
-                                </a>
-                              ))}
-                            </div>
-                          )}
+                          {obraEntry.titulo}
                         </li>
                       );
                     })}
