@@ -118,7 +118,7 @@ const Index = () => {
             </div>
             <Link 
               to="/autores"
-              className="link-arrow text-lg opacity-0 animate-fade-up md:pb-4" 
+              className="inline-flex items-center gap-3 px-6 py-3 bg-primary text-primary-foreground font-display text-base rounded-full transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20 opacity-0 animate-fade-up md:pb-4" 
               style={{ animationDelay: '0.2s' }}
             >
               Ver todos
