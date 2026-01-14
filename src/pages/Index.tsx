@@ -11,7 +11,7 @@ const Index = () => {
         {/* Hero background video */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-25"
             src="/7c2d1fe8-7c10-4566-9524-0451c32b2af3.mp4"
             autoPlay
             muted
