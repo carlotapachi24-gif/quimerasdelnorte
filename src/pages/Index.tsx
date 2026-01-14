@@ -9,7 +9,7 @@ const Index = () => {
 
   useEffect(() => {
     if (heroVideoRef.current) {
-      heroVideoRef.current.playbackRate = 0.5;
+      heroVideoRef.current.playbackRate = 0.75;
     }
   }, []);
 
@@ -21,7 +21,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <video
             ref={heroVideoRef}
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-20"
             src="/7c2d1fe8-7c10-4566-9524-0451c32b2af3.mp4"
             autoPlay
             muted
