@@ -38,7 +38,7 @@ const Index = () => {
             <div className="opacity-0 animate-fade-up pt-4" style={{ animationDelay: '0.9s' }}>
               <Link 
                 to="/origen"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-display text-lg rounded-full transition-all duration-300 hover:gap-5 hover:shadow-lg hover:shadow-primary/20"
               >
                 Descubrir la historia
                 <ArrowRight size={20} />
