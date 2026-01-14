@@ -37,7 +37,7 @@
     --input: 160 15% 85%;
     --ring: 161 100% 27%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     /* Custom tokens */
     --verde-corporativo: 161 100% 27%;
@@ -144,7 +144,7 @@
 
   /* Interactive cards */
   .card-hover {
-    @apply relative overflow-hidden transition-all duration-500;
+    @apply relative overflow-hidden transition-all duration-500 rounded-lg;
   }
 
   .card-hover::before {
@@ -215,6 +215,21 @@
 
   .link-arrow:hover svg {
     @apply translate-x-1;
+  }
+
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"],
+  a.bg-primary,
+  a.bg-secondary,
+  a.bg-accent,
+  a.bg-destructive,
+  button.bg-primary,
+  button.bg-secondary,
+  button.bg-accent,
+  button.bg-destructive {
+    @apply rounded-lg;
   }
 
   /* Section divider */
