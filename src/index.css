@@ -217,18 +217,18 @@
     @apply translate-x-1;
   }
 
-  button,
-  [type="button"],
-  [type="submit"],
-  [type="reset"],
-  a.bg-primary,
-  a.bg-secondary,
-  a.bg-accent,
-  a.bg-destructive,
-  button.bg-primary,
-  button.bg-secondary,
-  button.bg-accent,
-  button.bg-destructive {
+  button:not(.rounded-full),
+  [type="button"]:not(.rounded-full),
+  [type="submit"]:not(.rounded-full),
+  [type="reset"]:not(.rounded-full),
+  a.bg-primary:not(.rounded-full),
+  a.bg-secondary:not(.rounded-full),
+  a.bg-accent:not(.rounded-full),
+  a.bg-destructive:not(.rounded-full),
+  button.bg-primary:not(.rounded-full),
+  button.bg-secondary:not(.rounded-full),
+  button.bg-accent:not(.rounded-full),
+  button.bg-destructive:not(.rounded-full) {
     @apply rounded-lg;
   }
 
