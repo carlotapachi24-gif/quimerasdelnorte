@@ -22,7 +22,7 @@ const Index = () => {
           <video
             ref={heroVideoRef}
             className="w-full h-full object-cover opacity-10"
-            src="/7c2d1fe8-7c10-4566-9524-0451c32b2af3.mp4"
+            src="/43a12b4e-4f98-426e-9335-06c813bb1d9e.mp4"
             autoPlay
             muted
             playsInline
