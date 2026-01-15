@@ -84,23 +84,23 @@ const Archivo = () => {
                     href={pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="grid grid-cols-12 gap-4 py-4"
+                    className="flex items-center gap-3 py-4"
                   >
-                    <div className="col-span-1 text-muted-foreground text-sm">
+                    <div className="text-muted-foreground text-sm shrink-0 w-6">
                       {String(index + 1).padStart(2, '0')}
                     </div>
-                    <div className="col-span-2 md:col-span-1">
+                    <div className="shrink-0 w-14">
                       <span className="text-primary font-display text-lg">
                         {pelicula.anio}
                       </span>
                     </div>
-                    <div className="col-span-9 md:col-span-5">
-                      <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-lg font-display text-foreground group-hover:text-primary transition-colors truncate">
                         {pelicula.titulo}
                       </h3>
                     </div>
-                    <div className="col-span-12 md:col-span-5 md:text-right">
-                      <div className="inline-flex items-center justify-end gap-2">
+                    <div className="shrink-0">
+                      <div className="inline-flex items-center gap-2 whitespace-nowrap">
                         <span className="text-muted-foreground">{pelicula.director}</span>
                         <ExternalLink size={16} className="text-primary" />
                         <span className="sr-only">Ver documento</span>
