@@ -32,10 +32,10 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent bg-white/60 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-0 ${
         isScrolled
           ? "bg-white/70 backdrop-blur-md shadow-sm border-border"
-          : "bg-transparent"
+          : ""
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
