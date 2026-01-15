@@ -39,15 +39,22 @@ const Autores = () => {
       <section className="py-8 px-6 border-y border-border bg-secondary/30">
         <div className="container mx-auto max-w-5xl">
           <nav className="flex flex-wrap gap-4 md:gap-8">
-            {autores.map((autor) => (
+            {autores.map((autor) => {
+              const isActive = location.hash === `#${autor.id}`;
+              return (
               <a
                 key={autor.id}
                 href={`#${autor.id}`}
-                className="text-foreground/70 hover:text-primary transition-colors font-display text-lg"
+                className={`inline-flex items-center px-4 py-2 rounded-full border transition-colors font-display text-lg ${
+                  isActive
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-primary/50 text-primary bg-transparent hover:bg-primary/5"
+                }`}
               >
                 {autor.nombre.split(' ')[0]}
               </a>
-            ))}
+              );
+            })}
           </nav>
         </div>
       </section>

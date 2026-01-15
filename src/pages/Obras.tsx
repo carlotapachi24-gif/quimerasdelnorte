@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { autores } from "@/data/content";
 import { BookOpen, ExternalLink, ArrowRight } from "lucide-react";
 import { getPdfUrl } from "@/lib/utils"; 
 
 const Obras = () => {
+  const location = useLocation();
   // Only show authors and works that have an associated PDF
   const autoresConObras = autores.filter((autor) => autor.obras.some((obra) => {
     if (typeof obra === "string") return !!getPdfUrl(autor.id, obra);
@@ -68,16 +69,22 @@ const Obras = () => {
       <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[88px] z-40 backdrop-blur-sm">
         <div className="container mx-auto max-w-5xl">
           <nav className="flex flex-wrap gap-3 md:gap-5">
-            {autoresConObras.map((autor, index) => (
+            {autoresConObras.map((autor, index) => {
+              const isActive = location.hash === `#obras-${autor.id}`;
+              return (
               <a
                 key={autor.id}
                 href={`#obras-${autor.id}`}
-                className="text-foreground/70 hover:text-primary transition-colors font-display text-sm md:text-base group flex items-center gap-1"
+                className={`inline-flex items-center px-4 py-2 rounded-full border transition-colors font-display text-sm md:text-base ${
+                  isActive
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-primary/50 text-primary bg-transparent hover:bg-primary/5"
+                }`}
               >
                 {autor.nombre.split(' ')[0]}
-                <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
-            ))}
+              );
+            })}
           </nav>
         </div>
       </section>
