@@ -51,7 +51,7 @@ const Autores = () => {
                     : "border-primary/50 text-primary bg-transparent hover:bg-primary/5"
                 }`}
               >
-                {autor.nombre.split(' ')[0]}
+                {autor.nombre.startsWith("Mª ") ? "Mª Rosa" : autor.nombre.split(' ')[0]}
               </a>
               );
             })}
