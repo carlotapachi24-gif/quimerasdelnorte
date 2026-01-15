@@ -36,7 +36,7 @@ const Autores = () => {
       </section>
 
       {/* Author Index */}
-      <section className="py-8 px-6 border-y border-border bg-secondary/30">
+      <section className="py-8 px-6 border-y border-border bg-background/95 backdrop-blur-sm sticky top-[88px] z-40">
         <div className="container mx-auto max-w-5xl">
           <nav className="flex flex-wrap gap-4 md:gap-8">
             {autores.map((autor) => {

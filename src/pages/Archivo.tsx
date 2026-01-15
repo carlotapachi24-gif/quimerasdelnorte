@@ -41,7 +41,7 @@ const Archivo = () => {
       </section>
 
       {/* Filter */}
-      <section className="py-4 px-6 border-y border-border bg-white/60 backdrop-blur-md sticky top-20 z-40">
+      <section className="py-4 px-6 border-y border-border bg-background/95 sticky top-[88px] z-40 backdrop-blur-sm">
         <div className="container mx-auto max-w-5xl">
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-sm text-muted-foreground uppercase tracking-widest">Década:</span>
