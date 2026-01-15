@@ -47,9 +47,11 @@ const Archivo = () => {
             <span className="text-sm text-muted-foreground uppercase tracking-widest">Década:</span>
             <button
               onClick={() => setFilter("")}
-              className={`px-4 py-2 text-sm transition-colors ${
-                !filter ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-              } rounded-sm`}
+              className={`px-4 py-2 text-sm rounded-full border transition-colors ${
+                !filter
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-primary/50 text-primary bg-transparent hover:bg-primary/5"
+              }`}
             >
               Todas
             </button>
@@ -57,9 +59,11 @@ const Archivo = () => {
               <button
                 key={decada}
                 onClick={() => setFilter(String(decada))}
-                className={`px-4 py-2 text-sm transition-colors ${
-                  filter === String(decada) ? "bg-primary text-primary-foreground" : "text-foreground/70 hover:text-primary"
-                } rounded-sm`}
+                className={`px-4 py-2 text-sm rounded-full border transition-colors ${
+                  filter === String(decada)
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-primary/50 text-primary bg-transparent hover:bg-primary/5"
+                }`}
               >
                 {decada}s
               </button>
