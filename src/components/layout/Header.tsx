@@ -32,9 +32,9 @@ export function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent bg-white/60 backdrop-blur-md ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-transparent bg-white/70 backdrop-blur-lg ${
         isScrolled
-          ? "bg-white/70 shadow-sm border-border"
+          ? "bg-white/80 shadow-sm border-border"
           : ""
       }`}
     >
