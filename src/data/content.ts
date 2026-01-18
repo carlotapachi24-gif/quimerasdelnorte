@@ -112,7 +112,7 @@ export const autores: Autor[] = [
       "Cuatro elementos",
       { titulo: "Castora", pdf: "/Castora.pdf" },
       "3007191",
-      { titulo: "3007191", pdf: "/3007191.pdf" },
+      { titulo: "30071991", pdf: "/30071991.pdf" },
       "El antro",
       "El boletín",
       "El mesías",
