@@ -128,7 +128,7 @@ export function Header() {
                   onClick={() => setIsOpen(false)}
                   className={`py-3 px-4 text-lg font-display transition-all duration-300 hover:bg-primary/5 hover:pl-6 ${
                     location.pathname === item.href
-                      ? "text-primary bg-primary/5 border-l-2 border-primary"
+                      ? "text-primary bg-primary/5 border-l-2 border-primary rounded-xl"
                       : "text-foreground/70"
                   }`}
                   style={{ animationDelay: `${0.05 * index}s` }}
