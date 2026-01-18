@@ -77,7 +77,7 @@ const Archivo = () => {
       {/* Filmography */}
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-5xl">
-          <div className="space-y-1">
+          <div className="space-y-0">
             {peliculasFiltradas.map((pelicula, index) => {
               const pdfUrl = getFilmPdfUrl(pelicula)!;
 

@@ -79,7 +79,7 @@ export const autores: Autor[] = [
       "Pastor de almas",
       "El sexo de la bruja",
       "Última llamada",
-      { titulo: "última llamada", pdf: "/Última llamada.pdf" },
+      { titulo: "Última llamada", pdf: "/Última llamada.pdf" },
       "El concierto",
       "Crónica de una lápida",
       { titulo: "Morpheoppium", pdf: "/Morpheoppium.pdf" },
