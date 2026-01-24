@@ -136,7 +136,7 @@ export function Footer() {
               action="https://api.web3forms.com/submit"
               method="POST"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 w-full max-w-sm"
+              className="flex flex-col gap-4 w-full max-w-md"
             >
               <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
               <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
@@ -148,7 +148,7 @@ export function Footer() {
               <textarea
                 id="message"
                 name="message"
-                rows={6}
+                rows={4}
                 maxLength={2000}
                 placeholder="Escribe tu sugerencia..."
                 required
