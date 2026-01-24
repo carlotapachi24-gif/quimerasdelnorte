@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useRef, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
@@ -10,17 +10,6 @@ export function Footer() {
   const MAX_WORDS = 250;
 
   const countWords = (text: string) => (text.trim() ? text.trim().split(/\s+/).length : 0);
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://web3forms.com/client/script.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const clampWords = (text: string) => {
     const words = text.trim().split(/\s+/).filter(Boolean);
@@ -68,7 +57,7 @@ export function Footer() {
       <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-primary/10 to-transparent" />
 
       <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           <div className="max-w-md">
             <div className="flex items-center gap-4 mb-6">
               {/* Logo en vez de texto + quitada la raya horizontal */}
@@ -137,6 +126,53 @@ export function Footer() {
               </nav>
             </div>
           </div>
+
+          <section className="feedback lg:justify-self-end" aria-label="Sugerencias">
+            <h3 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Enviar sugerencia</h3>
+
+            <form
+              id="qdn-form"
+              ref={formRef}
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 w-full max-w-sm"
+            >
+              <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
+              <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
+              <input type="hidden" name="from_name" value="Quimeras del Norte" />
+
+              <label htmlFor="message" className="text-muted-foreground">
+                Mensaje (max. 250 palabras)
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                maxLength={2000}
+                placeholder="Escribe tu sugerencia..."
+                required
+                value={message}
+                onChange={(e) => handleMessageChange(e.target.value)}
+                className="w-full rounded-md border border-border bg-background/60 p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+
+              <small id="wc" className="text-muted-foreground/80">
+                {wordCount}/{MAX_WORDS} palabras
+              </small>
+
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+              >
+                Enviar
+              </button>
+            </form>
+
+            <p id="qdn-result" role="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
+              {result}
+            </p>
+          </section>
         </div>
 
         <div className="mt-20 pt-8 border-t border-border">
@@ -147,55 +183,6 @@ export function Footer() {
             <p className="text-xs text-muted-foreground/60">¶¸ {new Date().getFullYear()} Quimeras del Norte</p>
           </div>
         </div>
-
-        <section className="feedback mt-16" aria-label="Sugerencias">
-          <h3 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Enviar sugerencia</h3>
-
-          <form
-            id="qdn-form"
-            ref={formRef}
-            action="https://api.web3forms.com/submit"
-            method="POST"
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 max-w-xl"
-          >
-            <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
-            <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
-            <input type="hidden" name="from_name" value="Quimeras del Norte" />
-
-            <label htmlFor="message" className="text-muted-foreground">
-              Mensaje (max. 250 palabras)
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              maxLength={2000}
-              placeholder="Escribe tu sugerencia..."
-              required
-              value={message}
-              onChange={(e) => handleMessageChange(e.target.value)}
-              className="w-full rounded-md border border-border bg-background/60 p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-            />
-
-            <small id="wc" className="text-muted-foreground/80">
-              {wordCount}/{MAX_WORDS} palabras
-            </small>
-
-            <div className="h-captcha" data-captcha="true"></div>
-
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-            >
-              Enviar
-            </button>
-          </form>
-
-          <p id="qdn-result" role="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
-            {result}
-          </p>
-        </section>
       </div>
     </footer>
   );
