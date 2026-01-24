@@ -57,7 +57,7 @@ export function Footer() {
       <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-primary/10 to-transparent" />
 
       <div className="container mx-auto px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-10">
           <div className="max-w-md">
             <div className="flex items-center gap-4 mb-6">
               {/* Logo en vez de texto + quitada la raya horizontal */}
@@ -127,7 +127,7 @@ export function Footer() {
             </div>
           </div>
 
-          <section className="feedback lg:justify-self-end" aria-label="Sugerencias">
+          <section className="feedback" aria-label="Sugerencias">
             <h3 className="text-sm uppercase tracking-widest text-foreground mb-4 font-medium">Enviar sugerencia</h3>
 
             <form
@@ -136,7 +136,7 @@ export function Footer() {
               action="https://api.web3forms.com/submit"
               method="POST"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-3 w-full max-w-lg"
+              className="flex flex-col gap-3 w-full max-w-none"
             >
               <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
               <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
