@@ -94,9 +94,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
-}
+      
 <section class="feedback" aria-label="Sugerencias">
   <h3>Enviar sugerencia</h3>
 
@@ -175,3 +173,7 @@ export function Footer() {
     });
   })();
 </script>
+
+    </footer>
+  );
+}
