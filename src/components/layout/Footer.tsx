@@ -1,11 +1,69 @@
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [message, setMessage] = useState("");
+  const [wordCount, setWordCount] = useState(0);
+  const [result, setResult] = useState("");
+  const MAX_WORDS = 250;
+
+  const countWords = (text: string) => (text.trim() ? text.trim().split(/\s+/).length : 0);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://web3forms.com/client/script.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const clampWords = (text: string) => {
+    const words = text.trim().split(/\s+/).filter(Boolean);
+    if (words.length > MAX_WORDS) return `${words.slice(0, MAX_WORDS).join(" ")} `;
+    return text;
+  };
+
+  const handleMessageChange = (value: string) => {
+    const clamped = clampWords(value);
+    setMessage(clamped);
+    setWordCount(countWords(clamped));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (countWords(message) > MAX_WORDS) {
+      setResult("Te has pasado de 250 palabras. Recorta un poco.");
+      return;
+    }
+
+    const form = formRef.current;
+    if (!form) return;
+
+    const fd = new FormData(form);
+    try {
+      const r = await fetch(form.action, { method: "POST", body: fd });
+      const data = await r.json();
+      if (data.success) {
+        setResult("Enviado. Gracias.");
+        setMessage("");
+        setWordCount(0);
+      } else {
+        setResult("No se pudo enviar. Intenta de nuevo.");
+      }
+    } catch {
+      setResult("Error de red. Reintenta.");
+    }
+  };
+
   return (
     <footer className="relative border-t border-border bg-secondary/20 py-20 mt-24 overflow-hidden">
       {/* Decorative elements */}
-      {/* QUITADA la línea vertical izquierda */}
+      {/* QUITADA la linea vertical izquierda */}
       {/* <div className="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-primary/20 to-transparent" /> */}
       <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-primary/10 to-transparent" />
 
@@ -24,7 +82,8 @@ export function Footer() {
             </div>
 
             <p className="text-muted-foreground leading-relaxed text-lg">
-              Un espacio virtual donde las voces literarias del norte comparten sus obras, sin necesidad de convivir físicamente.
+              Un espacio virtual donde las voces literarias del norte comparten sus obras, sin necesidad de convivir
+              fisicamente.
             </p>
           </div>
 
@@ -52,10 +111,7 @@ export function Footer() {
             <div>
               <h4 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Archivo</h4>
               <nav className="flex flex-col gap-3">
-                {[
-                  { to: "/archivo", label: "Filmografía" },
-
-                ].map((link) => (
+                {[{ to: "/archivo", label: "Filmografia" }].map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
@@ -88,92 +144,59 @@ export function Footer() {
             <p className="text-sm text-muted-foreground italic font-display text-lg">
               Dedicado a quienes solo comparten las obras que escribieron en vida.
             </p>
-            <p className="text-xs text-muted-foreground/60">
-              © {new Date().getFullYear()} Quimeras del Norte
-            </p>
+            <p className="text-xs text-muted-foreground/60">¶¸ {new Date().getFullYear()} Quimeras del Norte</p>
           </div>
         </div>
+
+        <section className="feedback mt-16" aria-label="Sugerencias">
+          <h3 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Enviar sugerencia</h3>
+
+          <form
+            id="qdn-form"
+            ref={formRef}
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4 max-w-xl"
+          >
+            <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
+            <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
+            <input type="hidden" name="from_name" value="Quimeras del Norte" />
+
+            <label htmlFor="message" className="text-muted-foreground">
+              Mensaje (max. 250 palabras)
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              maxLength={2000}
+              placeholder="Escribe tu sugerencia..."
+              required
+              value={message}
+              onChange={(e) => handleMessageChange(e.target.value)}
+              className="w-full rounded-md border border-border bg-background/60 p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+            />
+
+            <small id="wc" className="text-muted-foreground/80">
+              {wordCount}/{MAX_WORDS} palabras
+            </small>
+
+            <div className="h-captcha" data-captcha="true"></div>
+
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              Enviar
+            </button>
+          </form>
+
+          <p id="qdn-result" role="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
+            {result}
+          </p>
+        </section>
       </div>
-      
-<section class="feedback" aria-label="Sugerencias">
-  <h3>Enviar sugerencia</h3>
-
-  <form id="qdn-form" action="https://api.web3forms.com/submit" method="POST">
-    <!-- 1) Tu key -->
-    <input type="hidden" name="access_key" value="TU_ACCESS_KEY_NUEVA" />
-
-    <!-- 2) Opcionales útiles -->
-    <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
-    <input type="hidden" name="from_name" value="Quimeras del Norte" />
-
-    <!-- 3) SOLO mensaje -->
-    <label for="message">Mensaje (máx. 250 palabras)</label>
-    <textarea
-      id="message"
-      name="message"
-      rows="6"
-      maxlength="2000"
-      placeholder="Escribe tu sugerencia…"
-      required></textarea>
-
-    <small id="wc">0/250 palabras</small>
-
-    <!-- 4) hCaptcha (recomendado) -->
-    <div class="h-captcha" data-captcha="true"></div>
-
-    <button type="submit">Enviar</button>
-  </form>
-
-  <p id="qdn-result" role="status" aria-live="polite"></p>
-</section>
-
-<!-- Script de Web3Forms para hCaptcha -->
-<script src="https://web3forms.com/client/script.js" async defer></script>
-
-<script>
-  (() => {
-    const form = document.getElementById("qdn-form");
-    const msg = document.getElementById("message");
-    const wc = document.getElementById("wc");
-    const out = document.getElementById("qdn-result");
-    const MAX_WORDS = 250;
-
-    const countWords = (t) => (t.trim() ? t.trim().split(/\s+/).length : 0);
-
-    function clampWords() {
-      const words = msg.value.trim().split(/\s+/).filter(Boolean);
-      if (words.length > MAX_WORDS) msg.value = words.slice(0, MAX_WORDS).join(" ") + " ";
-      wc.textContent = `${countWords(msg.value)}/${MAX_WORDS} palabras`;
-    }
-
-    msg.addEventListener("input", clampWords);
-    clampWords();
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (countWords(msg.value) > MAX_WORDS) {
-        out.textContent = "Te has pasado de 250 palabras. Recorta un poco 🙂";
-        return;
-      }
-
-      const fd = new FormData(form);
-      try {
-        const r = await fetch(form.action, { method: "POST", body: fd });
-        const data = await r.json();
-        if (data.success) {
-          out.textContent = "Enviado. Gracias.";
-          form.reset();
-          clampWords();
-        } else {
-          out.textContent = "No se pudo enviar. Intenta de nuevo.";
-        }
-      } catch {
-        out.textContent = "Error de red. Reintenta.";
-      }
-    });
-  })();
-</script>
-
     </footer>
   );
 }
