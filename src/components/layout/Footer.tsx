@@ -142,6 +142,17 @@ export function Footer() {
               <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
               <input type="hidden" name="from_name" value="Quimeras del Norte" />
 
+              <label htmlFor="email" className="text-muted-foreground">
+                Correo (opcional)
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="tu@correo.com"
+                className="w-full rounded-md border border-border bg-background/60 p-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+
               <label htmlFor="message" className="text-muted-foreground">
                 Mensaje (max. 250 palabras)
               </label>
