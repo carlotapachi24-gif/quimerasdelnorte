@@ -128,7 +128,7 @@ export function Footer() {
           </div>
 
           <section className="feedback lg:justify-self-end" aria-label="Sugerencias">
-            <h3 className="text-sm uppercase tracking-widest text-foreground mb-6 font-medium">Enviar sugerencia</h3>
+            <h3 className="text-sm uppercase tracking-widest text-foreground mb-4 font-medium">Enviar sugerencia</h3>
 
             <form
               id="qdn-form"
@@ -136,7 +136,7 @@ export function Footer() {
               action="https://api.web3forms.com/submit"
               method="POST"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 w-full max-w-md"
+              className="flex flex-col gap-3 w-full max-w-lg"
             >
               <input type="hidden" name="access_key" value="f1254b6c-a899-4186-b11c-cd5a5ec72727" />
               <input type="hidden" name="subject" value="Sugerencia desde Quimeras del Norte" />
@@ -148,7 +148,7 @@ export function Footer() {
               <textarea
                 id="message"
                 name="message"
-                rows={4}
+                rows={3}
                 maxLength={2000}
                 placeholder="Escribe tu sugerencia..."
                 required
@@ -169,7 +169,7 @@ export function Footer() {
               </button>
             </form>
 
-            <p id="qdn-result" role="status" aria-live="polite" className="mt-3 text-sm text-muted-foreground">
+            <p id="qdn-result" role="status" aria-live="polite" className="mt-2 text-sm text-muted-foreground">
               {result}
             </p>
           </section>
