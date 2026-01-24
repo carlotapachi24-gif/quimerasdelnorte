@@ -18,7 +18,6 @@ const Archivo = () => {
     if (pelicula.anio === 1950 && pelicula.titulo === "Sunset Boulevard") return SUNSET_BOULEVARD_1950_PDF;
     if (pelicula.anio === 1955 && pelicula.titulo === "El hombre del brazo de oro") return EL_HOMBRE_DEL_BRAZO_DE_ORO_1955_PDF;
     if (pelicula.anio === 1942 && pelicula.titulo === "Casablanca ") return CASABLANCA_1942_PDF;
-
     return undefined;
   };
 
