@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Nombre en la pestaÃ±a -->
+    <!-- Nombre en la pestaña -->
     <title>Quimeras del Norte | Archivo literario y memorial de autores ausentes</title>
 
-    <!-- SEO bÃ¡sico (alineado con el canon narrativo) -->
+    <!-- SEO básico (alineado con el canon narrativo) -->
     <meta
       name="description"
-      content="Quimeras del Norte: un espacio virtual nacido en un Ã¡tico de Compostela en los aÃ±os 80. Archivo literario y memorial de autores ya ausentes."
+      content="Quimeras del Norte: un espacio virtual nacido en un ático de Compostela en los años 80. Archivo literario y memorial de autores ya ausentes."
     />
     <meta name="author" content="Quimeras del Norte" />
     <meta name="robots" content="index,follow" />
 
     <link rel="canonical" href="https://www.quimerasdelnorte.es/" />
-<meta property="og:url" content="https://www.quimerasdelnorte.es/" />
+    <meta property="og:url" content="https://www.quimerasdelnorte.es/" />
 
 
-    <!-- (Opcional pero recomendable) Color de UI en mÃ³vil -->
+    <!-- (Opcional pero recomendable) Color de UI en móvil -->
     <meta name="theme-color" content="#0b0b0f" />
 
     <!-- Favicon -->
@@ -35,7 +35,7 @@
     <meta property="og:title" content="Quimeras del Norte" />
     <meta
       property="og:description"
-      content="Un espacio virtual nacido en un Ã¡tico de Compostela en los aÃ±os 80. Archivo literario y memorial de autores ya ausentes."
+      content="Un espacio virtual nacido en un ático de Compostela en los años 80. Archivo literario y memorial de autores ya ausentes."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
@@ -49,9 +49,23 @@
     <meta name="twitter:title" content="Quimeras del Norte" />
     <meta
       name="twitter:description"
-      content="Archivo literario y memorial: naciÃ³ en un Ã¡tico de Compostela en los aÃ±os 80 y hoy vive como espacio virtual."
+      content="Archivo literario y memorial: nació en un ático de Compostela en los años 80 y hoy vive como espacio virtual."
     />
     <meta name="twitter:image" content="http://www.quimerasdelnorte.es/og-image.png" />
+
+    <script>
+      // GitHub Pages SPA redirect
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var encoded = params.get('p');
+        if (encoded) {
+          var target = decodeURIComponent(encoded);
+          if (target && target !== window.location.pathname) {
+            window.history.replaceState(null, '', target);
+          }
+        }
+      })();
+    </script>
   </head>
 
   <link rel="canonical" href="https://www.quimerasdelnorte.es/" />
