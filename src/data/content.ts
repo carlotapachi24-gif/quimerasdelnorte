@@ -63,6 +63,7 @@ export const autores: Autor[] = [
         { id: "poema-4", titulo: "Poema 4", pdf: "/04.pdf" },
         { id: "poema-5", titulo: "Poema 5", pdf: "/05.pdf" },
         { id: "poema-6", titulo: "Poema 6", pdf: "/06.pdf" },
+        { id: "poema-7", titulo: "Poema 7", pdf: "/07.pdf" },
       ],
     }],
   },
@@ -79,6 +80,7 @@ export const autores: Autor[] = [
     obras: [
       "El extraño caso de Sir Archibald Darkplainly",
       "Pastor de almas",
+       { titulo: "Pastor de almas", pdf: "/Pastor de almas.pdf" },
       "El sexo de la bruja",
       "Última llamada",
       { titulo: "Última llamada", pdf: "/Última llamada.pdf" },
@@ -157,6 +159,7 @@ export const autores: Autor[] = [
           { id: "Sothy's", titulo: "3 Sothy's", pdf: "/03-Sothy's.pdf" },
           { id: "Maria-Henriëttalei", titulo: "4 Maria-Henriëttalei", pdf: "/04-Maria-Henriëttalei.pdf" },
           { id: "Golders Green", titulo: "5 Golders Green", pdf: "/05-Golders Green.pdf" },
+          { id: "Dream City", titulo: "6 Dream City", pdf: "/06-Dream City.pdf" },
         ],
       },
     ],

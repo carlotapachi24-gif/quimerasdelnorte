@@ -11,6 +11,7 @@ const Archivo = () => {
   const EL_HOMBRE_DEL_BRAZO_DE_ORO_1955_PDF = "/1955 - El hombre del brazo de oro y 1988 - Bird.pdf";
   const CASABLANCA_1942_PDF = "/1942 - Casablanca.pdf";
   const LAWRENCE_DE_ARABIA_1962_PDF = "/1962 - Lawrence de Arabia.pdf";
+   const ESPARTACO_1960_Y_BLADE_RUNNER_1982_PDF = "/1960 - Espartaco y 1982 - Blade Runner.pdf";
 
   // Helper to return a PDF URL for a given film (if available)
   const getFilmPdfUrl = (pelicula: { titulo: string; anio: number }) => {
@@ -20,6 +21,8 @@ const Archivo = () => {
     if (pelicula.anio === 1955 && pelicula.titulo === "El hombre del brazo de oro") return EL_HOMBRE_DEL_BRAZO_DE_ORO_1955_PDF;
     if (pelicula.anio === 1942 && pelicula.titulo === "Casablanca") return CASABLANCA_1942_PDF;
     if (pelicula.anio === 1962 && pelicula.titulo === "Lawrence de Arabia") return LAWRENCE_DE_ARABIA_1962_PDF;
+    if (pelicula.anio === 1960 && pelicula.titulo === "Espartaco") return ESPARTACO_1960_Y_BLADE_RUNNER_1982_PDF;
+    if (pelicula.anio === 1982 && pelicula.titulo === "Blade Runner") return ESPARTACO_1960_Y_BLADE_RUNNER_1982_PDF;
     return undefined;
   };
 
