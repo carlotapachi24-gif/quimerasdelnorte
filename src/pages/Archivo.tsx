@@ -11,7 +11,7 @@ const Archivo = () => {
   const EL_HOMBRE_DEL_BRAZO_DE_ORO_1955_PDF = "/1955 - El hombre del brazo de oro y 1988 - Bird.pdf";
   const CASABLANCA_1942_PDF = "/1942 - Casablanca.pdf";
   const LAWRENCE_DE_ARABIA_1962_PDF = "/1962 - Lawrence de Arabia.pdf";
-   const ESPARTACO_1960_Y_BLADE_RUNNER_1982_PDF = "/1960 - Espartaco y 1982 - Blade Runner.pdf";
+   const ESPARTACO_1960_Y_BLADE_RUNNER_1982_PDF = "/1960 - Espartaco y 1982 - Blade runner.pdf";
 
   // Helper to return a PDF URL for a given film (if available)
   const getFilmPdfUrl = (pelicula: { titulo: string; anio: number }) => {
